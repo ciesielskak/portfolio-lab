@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap');
+@import "colors";
+@import "fonts";
+@import "./src/sass/home";
+@import "../login";
+@import "src/sass/foursteps";
+@import "src/sass/about";
+@import "node_modules/reset-css/sass/reset";
+
+
+body {
+  font-family: $font-base;
+}
+

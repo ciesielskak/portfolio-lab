@@ -1,0 +1,16 @@
+.login {
+  &__container {
+    min-height: 100vh;
+  }
+  &__card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
