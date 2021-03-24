@@ -1,0 +1,22 @@
+.about {
+  &__container {
+    width: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+    display: flex;
+  }
+  &__text {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  &__image {
+    width: 60%;
+    height: auto;
+  }
+  &__signature {
+    align-self: flex-end;
+  }
+}
