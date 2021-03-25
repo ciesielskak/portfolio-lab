@@ -3,28 +3,27 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
-import { FourSteps } from "./components/FourSteps";
-import { About } from "./components/About";
+import {HomeHeader} from "./components/HomeHeader";
+
 
 export const App = () => {
     return (
 
         <>
         <BrowserRouter>
-                <Switch>
-                    <Route exact path='/'>
-                        <Home />
-                    </Route>
-                    <Route path='/login'>
+            <HomeHeader />
+            <Switch>
+                <Route exact path='/'>
+                    <Home />
+                </Route>
+                    <Route exact path='/login'>
                         <Login />
                     </Route>
-                    <Route path='/register'>
+                    <Route exact path='/register'>
                         <SignUp />
                     </Route>
-                </Switch>
+            </Switch>
         </BrowserRouter>
-            <FourSteps />
-            <About />
         </>
 
     )

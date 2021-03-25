@@ -1,11 +1,10 @@
 import Decoration from "../assets/Decoration.svg";
 import React from "react";
-import {HomeHeader} from "./Home";
+import { HomeHeader } from "./HomeHeader";
 
 export const SignUp = () => {
     return (
         <div className='login__container'>
-            <HomeHeader />
             <SignUpCard />
         </div>
     )
