@@ -4,13 +4,14 @@ import Reuse from '../assets/reuse.png';
 import Search from '../assets/search.png';
 import Shirt from '../assets/shirt.png';
 import Shop from '../assets/shop.png';
+import { Link } from 'react-scroll'
 
 export const FourSteps = () =>{
     return (
         <div className='foursteps__container' id='foursteps'>
-            <div className='foursteps__header'>
-                Wystarczą 4 kroki
-            </div>
+            <h1 className='foursteps__header'>
+                Wystarczą 4 proste kroki
+            </h1>
             <img src={Decoration} alt='decoration' />
             <div className='foursteps__maincontent'>
                 <div className='foursteps__maincontent__column'>
@@ -34,7 +35,7 @@ export const FourSteps = () =>{
                     <span>kurier przyjedzie w dogodnym terminie</span>
                 </div>
             </div>
-            <button>ODDAJ RZECZY</button>
+            <Link>ODDAJ RZECZY</Link>
 
         </div>
     )
