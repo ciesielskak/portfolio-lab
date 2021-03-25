@@ -16,19 +16,24 @@ const SignUpCard = () => {
             <h1>Załóż konto</h1>
             <img src={Decoration} alt='decoration'/>
             <form>
-                <label>Email
-                <input type='email'/>
-                </label>
-                <label>Hasło
-                <input type='password'/>
-                </label>
-                <label>Powtórz hasło
-                <input type='password'/>
-                </label>
-                <button>Zaloguj</button>
-                <button>Załóż konto</button>
+                <div className='login__inputs__wrapper'>
+                    <h2>Email
+                    </h2>
+                    <input type='email'/>
+                    <h2>Hasło
+                    </h2>
+                    <input type='password'/>
+                    <h2>Powtórz hasło
+                    </h2>
+                    <input type='password'/>
+                </div>
+                <div className='login__btns'>
+                    <button>Zaloguj</button>
+                    <button>Załóż konto</button>
+                </div>
             </form>
         </div>
+
 
     )
 }

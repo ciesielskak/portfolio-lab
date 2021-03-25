@@ -17,14 +17,18 @@ const LoginCard = () => {
             <h1>Zaloguj się</h1>
             <img src={Decoration} alt='decoration'/>
             <form>
-                <label>Email
+                <div className='login__inputs__wrapper'>
+                    <h2>Email
+                </h2>
                     <input type='email'/>
-                </label>
-                <label>Hasło
+                    <h2>Hasło
+                </h2>
                     <input type='password'/>
-                </label>
-                <button>Zaloguj</button>
-                <button>Załóż konto</button>
+                </div>
+                <div className='login__btns'>
+                    <button>Zaloguj</button>
+                    <button>Załóż konto</button>
+                </div>
             </form>
         </div>
 
