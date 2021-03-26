@@ -11,8 +11,8 @@ export const HomeHeader = () => {
                 <NavLink to='/'>Start</NavLink>
                 <Link to='foursteps' smooth={true} duration={1000}>O co chodzi?</Link>
                 <Link to='about' smooth={true} duration={1000}>O nas</Link>
-                <Link>Fundacja i organizacje</Link>
-                <Link>Kontakt</Link>
+                <Link to='foundations' smooth={true} duration={1000}>Fundacja i organizacje</Link>
+                <Link to='contact' smooth={true} duration={1000}>Kontakt</Link>
             </ul>
         </nav>
     )

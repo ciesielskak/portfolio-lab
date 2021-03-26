@@ -1,0 +1,70 @@
+.foundations {
+  &__container {
+    width: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 50px 0;
+
+  }
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      font-size: 2.37rem;
+      color: $main-font-color;
+      letter-spacing: -0.76px;
+      margin-bottom: 30px;
+    }
+    span {
+      width: 42%;
+      font-size: 1.37rem;
+      color: $main-font-color;
+      text-align: center;
+      margin: 30px 0;
+      line-height: 1.87rem;
+    }
+    &__nav {
+      display: flex;
+      margin: 20px;
+      box-sizing: border-box;
+      a {
+        width: 9em;
+        text-decoration: none;
+        color: inherit;
+        padding: 20px;
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 20px;
+
+        &:hover {
+          border: 2px solid $main-font-color;
+        }
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: center;
+    color: $main-font-color;
+    &__list {
+      width: 70%;
+      &__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+        border-bottom: 2px solid $form-border-bottom;
+        h2 {
+          font-size: 1.6rem;
+          margin-bottom: 5px;
+        }
+        span {
+
+        }
+      }
+    }
+  }
+}
