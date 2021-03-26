@@ -2,27 +2,23 @@
   &__container {
     width: 100%;
     max-width: 1600px;
-    min-height: 100vh;
+    min-height: 95vh;
     background: $body-color;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 0.7fr 1.3fr 1fr;
-    grid-template-rows:  0.5fr 1.7fr 1.1fr;;
+    grid-template-rows: 0.4fr 1.5fr 1.1fr;
     gap: 0 0;
     grid-template-areas:
     "img img home__navigation home__navigation"
     "img img home__mainLinks home__mainLinks"
-    "home__columns__container home__columns__container home__columns__container home__columns__container";
+    "img img home__mainLinks home__mainLinks";
   }
   &__mainImage {
     background-image: url("../assets/Hero Image.png");
+    background-position: -340px;
     background-size: cover;
     background-repeat: no-repeat;
-    //background-position: bottom;
-    //position: absolute;
-    //top:0px;
-    //width: 43%;
-    //height: 70%;
     grid-area: img;
   }
   &__navigation {
@@ -48,6 +44,7 @@
         color: #737373;
         padding: 5px 10px;
         font-size: 0.9rem;
+        border: 2px solid transparent;
 
         &:hover {
           border: 2px solid $column-gold;
@@ -68,9 +65,9 @@
         cursor: pointer;
         font-size: 1.13rem;
         padding: 5px 10px;
-
+        border: 2px solid transparent;
         &:hover {
-          border: 0.75px solid #3C3C3C;
+          border: 2px solid #3C3C3C;
         }
 
       }
@@ -79,14 +76,13 @@
   &__columns {
     &__container {
       width: 100%;
-      padding: 10px 0;
+      padding: 50px 60px;
       background-image: url("../assets/3 Columns Background.png");
       background-repeat: no-repeat;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       box-sizing: border-box;
-      grid-area: home__columns__container;
     }
   }
   &__column {
@@ -94,17 +90,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     text-align: center;
-    padding: 0 40px;
+    box-sizing: border-box;
     h1 {
       font-size: 5.6rem;
       color: $brown-ish;
+      margin-bottom: 20px;
     }
     h3 {
       font-size: 1.12rem;
       color: #3C3C3C;
+      margin-bottom: 20px;
     }
     span {
+      width: 90%;
       font-family: $font-alt;
       font-size: 1rem;
       line-height: 1.8rem;
@@ -123,19 +123,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-around;
+      justify-content: flex-start;
     }
     &__title {
-      width: 80%;
-      font-size: 2.37rem;
+      width: 75%;
+      font-size: 2.2rem;
       text-align: center;
       line-height: 55px;
+      margin: 100px 0 20px 0;
     }
     &__btns {
-      font-size: 2.25rem;
+      font-size: 2rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 40px;
       a {
         width: 8em;
         box-sizing: border-box;

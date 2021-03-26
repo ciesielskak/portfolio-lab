@@ -4,7 +4,8 @@ import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { SignUp } from "./components/SignUp";
 import {HomeHeader} from "./components/HomeHeader";
-
+import { StateProvider } from "./context/StateProvider";
+import { initialState, reducer } from "./context/reducer";
 
 
 export const App = () => {
@@ -12,6 +13,7 @@ export const App = () => {
 
         <>
         <BrowserRouter>
+            <StateProvider reducer={reducer} initialState={initialState}>
             <HomeHeader />
             <Switch>
                 <Route exact path='/'>
@@ -24,6 +26,7 @@ export const App = () => {
                         <SignUp />
                     </Route>
             </Switch>
+            </StateProvider>
         </BrowserRouter>
         </>
 

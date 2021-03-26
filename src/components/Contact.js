@@ -20,7 +20,7 @@ export const Contact = () => {
                     <input type='email'/>
                 </div>
                 </div>
-                <div className='contact__form__inputs'>
+                <div className='contact__form__textarea'>
                     <h2>Wpisz swoją wiadomość</h2>
                     <textarea/>
                 </div>

@@ -17,11 +17,12 @@
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.5;
+    opacity: 0.4;
   }
   }
 
   &__form {
+    width: 40%;
     position: relative;
     color: $main-font-color;
     box-sizing: border-box;
@@ -42,6 +43,13 @@
     &__inputWrapper {
       display: flex;
       margin-top: 20px;
+    }
+    &__inputs {
+      width: 50%;
+      margin: 10px;
+      input {
+        width: 100%;
+      }
     }
     input, textarea {
       background: transparent;

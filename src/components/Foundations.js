@@ -1,105 +1,186 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Decoration from '../assets/Decoration.svg'
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
-import { useParams, Redirect } from "react-router-dom";
+import {useStateValue} from "../context/StateProvider";
 
 
 export const Foundations = () => {
+    const [state, dispatch] = useStateValue();
+const { foundations, organizations, locals } = state;
+
     return (
-<BrowserRouter>
+
         <div className='foundations__container' id='foundations'>
             <div className='foundations__header'>
                 <h1>Komu pomagamy?</h1>
                 <img src={Decoration} alt='decoration' />
                 <nav className='foundations__header__nav'>
-                    <Link to='/foundations'>
+                    <a href='#foundations' id='foundations' onClick={() => dispatch({type: 'showFoundations'})} >
                         Fundacjom
-                    </Link>
-                    <Link to='/organizations'>
+                    </a>
+                    <a href='#organizations' id='organizations' onClick={() => dispatch({type: 'showOrganizations'})} >
                         Organizacjom pozarządowym
-                    </Link>
-                    <Link to='local'>
+                    </a>
+                    <a href='#local' id='local' onClick={() => dispatch({type: 'showLocals'})} >
                         Lokalnym zbiórkom
-                    </Link>
+                    </a>
                 </nav>
                 <span>
                 W naszej bazie znajdziesz listę zweryfikowanych Fundacji,
                 z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.
             </span>
             </div>
-            <Switch>
-            <Route path='/:id'>
-                <FoundationContent />
-            </Route>
-            </Switch>
+            {foundations && <FoundationList />}
+            {organizations && <OrganizationsList />}
+            {locals && <LocalList />}
         </div>
-</BrowserRouter>
-
     )
 }
-const foundations = [
-    {
-        name: 'Fundacja “Dbam o Zdrowie"',
-        aim: 'Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.',
-        desc: 'ubrania, jedzenie, sprzęt AGD, meble, zabawki'
-    },
-    {
-        name: 'Fundacja “Dla dzieci”',
-        aim: 'Cel i misja: Pomoc dzieciom z ubogich rodzin.',
-        desc: 'ubrania, meble, zabawki'
-    },
-    {
-        name: 'Fundacja “Bez domu”',
-        aim: 'Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.',
-        desc: 'ubrania, jedzenie, ciepłe koce'
-    },
-    {
-        name: 'Fundacja “Dbam o Zdrowie"',
-        aim: 'Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.',
-        desc: 'ubrania, jedzenie, sprzęt AGD, meble, zabawki'
-    },
-    {
-        name: 'Fundacja “Dla dzieci”',
-        aim: 'Cel i misja: Pomoc dzieciom z ubogich rodzin.',
-        desc: 'ubrania, meble, zabawki'
-    },
-    {
-        name: 'Fundacja “Bez domu”',
-        aim: 'Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.',
-        desc: 'ubrania, jedzenie, ciepłe koce'
-    }
-
-]
 
 
-const FoundationContent = () => {
-    const { id } = useParams();
 
-
+const FoundationList = () => {
     return (
-       <div className="foundations__content">
-           <FoundationContentList />
+       <div className="foundations__content" id='foundations'>
+           <ul className='foundations__content__list'>
+                       <li className='foundations__content__list__item'>
+                           <div>
+                               <h2>Fundacja "Dbam o Zdrowie"</h2>
+                               <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                           </div>
+                           <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+                       </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja “Dla dzieci”</h2>
+                       <p>Cel i misja: Pomoc dzieciom z ubogich rodzin.</p>
+                   </div>
+                   <span>ubrania, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja “Bez domu”</h2>
+                       <p>Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.</p>
+                   </div>
+                   <span>ubrania, jedzenie, ciepłe koce</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+               <li className='foundations__content__list__item'>
+                   <div>
+                       <h2>Fundacja "Dbam o Zdrowie"</h2>
+                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                   </div>
+                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+               </li>
+
+
+           </ul>
+
        </div>
     )
 }
 
-const FoundationContentList = () => {
+const OrganizationsList = () => {
+
     return (
-        <ul className='foundations__content__list'>
-            {
+        <div className="foundations__content" id='foundations'>
+            <ul className='foundations__content__list'>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>Haha</h2>
+                        <p>Hihi</p>
+                    </div>
+                    <span>Huehue</span>
+                </li>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>Huehue</h2>
+                        <p>Haha</p>
+                    </div>
+                    <span>Huhu</span>
+                </li>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>BLeble</h2>
+                        <p>blablablablalabalbalabalbaa.</p>
+                    </div>
+                    <span>bleblebleleb</span>
+                </li>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>HUahuahuauahua</h2>
+                        <p>XDXDXDXDXDXD</p>
+                    </div>
+                    <span>lalalalalaaa</span>
+                </li>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>alalalala</h2>
+                        <p>b;ba;baa;a;aa</p>
+                    </div>
+                    <span>mimimiimimiimi</span>
+                </li>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>BLeblebele</h2>
+                        <p>lalalalala</p>
+                    </div>
+                    <span>huehuehuehuehe</span>
+                </li>
 
-                        foundations.map((item, index) => (
-                            <li key={index} className='foundations__content__list__item'>
-                                <div>
-                                    <h2>{item.name}</h2>
-                                    <p>{item.aim}</p>
-                                </div>
-                                <span>{item.desc}</span>
-                            </li>
-                        ))
 
-            }
-        </ul>
+            </ul>
 
+        </div>
+    )
+}
+
+
+const LocalList = () => {
+    return (
+        <div className="foundations__content" id='foundations'>
+            <ul className='foundations__content__list'>
+                <li className='foundations__content__list__item'>
+                    <div>
+                        <h2>Haha</h2>
+                        <p>Hihi</p>
+                    </div>
+                    <span>Huehue</span>
+                </li>
+            </ul>
+        </div>
     )
 }

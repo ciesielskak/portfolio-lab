@@ -10,7 +10,6 @@ export const HomeWelcome = () => {
         <div className='home__container' id='home'>
             <div className='home__mainImage'>
             </div>
-            <HomeThreeColumns />
             <HomeMainInfo />
         </div>
     )
