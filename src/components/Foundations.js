@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Decoration from '../assets/Decoration.svg'
 import {useStateValue} from "../context/StateProvider";
+import { db } from "../firebase/firebase";
 
 
 export const Foundations = () => {
@@ -39,74 +40,40 @@ const { foundations, organizations, locals } = state;
 
 
 const FoundationList = () => {
+    const [foundations, setFoundations] = useState([]);
+
+    useEffect(() => {
+        db.collection('lists')
+            .doc('XSd9E9WkBtwYaXdxsxim')
+            .collection('topics')
+            .orderBy('name', "asc")
+            .onSnapshot(snapshot => (
+                setFoundations(
+                    snapshot.docs.map(doc => ({
+                        name: doc.data().name,
+                        aim: doc.data().aim,
+                        desc: doc.data().desc
+                    }))
+                )
+            ))
+
+
+    }, [])
+
     return (
        <div className="foundations__content" id='foundations'>
            <ul className='foundations__content__list'>
-                       <li className='foundations__content__list__item'>
+               {
+                   foundations.map((item, index) => (
+                       <li key={index} className='foundations__content__list__item'>
                            <div>
-                               <h2>Fundacja "Dbam o Zdrowie"</h2>
-                               <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
+                               <h2>{item.name}</h2>
+                               <p>{item.aim}</p>
                            </div>
-                           <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
+                           <span>{item.desc}</span>
                        </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja “Dla dzieci”</h2>
-                       <p>Cel i misja: Pomoc dzieciom z ubogich rodzin.</p>
-                   </div>
-                   <span>ubrania, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja “Bez domu”</h2>
-                       <p>Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.</p>
-                   </div>
-                   <span>ubrania, jedzenie, ciepłe koce</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-               <li className='foundations__content__list__item'>
-                   <div>
-                       <h2>Fundacja "Dbam o Zdrowie"</h2>
-                       <p>Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej</p>
-                   </div>
-                   <span>ubrania, jedzenie, sprzęt AGD, meble, zabawki</span>
-               </li>
-
-
+                   ))
+               }
            </ul>
 
        </div>
@@ -114,52 +81,39 @@ const FoundationList = () => {
 }
 
 const OrganizationsList = () => {
+const [organizations, setOrganizations] = useState([])
 
+    useEffect(() => {
+        db.collection('lists')
+            .doc('fyNsqYqE3QG1CHsixtac')
+            .collection('topics')
+            .orderBy('name', "asc")
+            .onSnapshot(snapshot => (
+                setOrganizations(
+                    snapshot.docs.map(doc => ({
+                        name: doc.data().name,
+                        aim: doc.data().aim,
+                        desc: doc.data().desc
+                    }))
+                )
+            ))
+
+
+    }, [])
     return (
         <div className="foundations__content" id='foundations'>
             <ul className='foundations__content__list'>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>Haha</h2>
-                        <p>Hihi</p>
-                    </div>
-                    <span>Huehue</span>
-                </li>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>Huehue</h2>
-                        <p>Haha</p>
-                    </div>
-                    <span>Huhu</span>
-                </li>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>BLeble</h2>
-                        <p>blablablablalabalbalabalbaa.</p>
-                    </div>
-                    <span>bleblebleleb</span>
-                </li>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>HUahuahuauahua</h2>
-                        <p>XDXDXDXDXDXD</p>
-                    </div>
-                    <span>lalalalalaaa</span>
-                </li>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>alalalala</h2>
-                        <p>b;ba;baa;a;aa</p>
-                    </div>
-                    <span>mimimiimimiimi</span>
-                </li>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>BLeblebele</h2>
-                        <p>lalalalala</p>
-                    </div>
-                    <span>huehuehuehuehe</span>
-                </li>
+                {
+                    organizations.map((item, index) => (
+                        <li key={index} className='foundations__content__list__item'>
+                            <div>
+                                <h2>{item.name}</h2>
+                                <p>{item.aim}</p>
+                            </div>
+                            <span>{item.desc}</span>
+                        </li>
+                    ))
+                }
 
 
             </ul>
@@ -170,16 +124,38 @@ const OrganizationsList = () => {
 
 
 const LocalList = () => {
+    const [local, setLocal] = useState([])
+    useEffect(() => {
+        db.collection('lists')
+            .doc('fj8kTxDJugTkwXL4uzi7')
+            .collection('topics')
+            .orderBy('name', "asc")
+            .onSnapshot(snapshot => (
+                setLocal(
+                    snapshot.docs.map(doc => ({
+                        name: doc.data().name,
+                        aim: doc.data().aim,
+                        desc: doc.data().desc
+                    }))
+                )
+            ))
+
+
+    }, [])
     return (
         <div className="foundations__content" id='foundations'>
             <ul className='foundations__content__list'>
-                <li className='foundations__content__list__item'>
-                    <div>
-                        <h2>Haha</h2>
-                        <p>Hihi</p>
-                    </div>
-                    <span>Huehue</span>
-                </li>
+                {
+                    local.map((item, index) => (
+                        <li key={index} className='foundations__content__list__item'>
+                            <div>
+                                <h2>{item.name}</h2>
+                                <p>{item.aim}</p>
+                            </div>
+                            <span>{item.desc}</span>
+                        </li>
+                    ))
+                }
             </ul>
         </div>
     )
