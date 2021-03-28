@@ -1,5 +1,7 @@
 import React from 'react';
-import Decoration from '../assets/Decoration.svg'
+import Decoration from '../assets/Decoration.svg';
+import Facebook from '../assets/Facebook.png';
+import Instagram from '../assets/Instagram.png'
 
 export const Contact = () => {
     return (
@@ -24,10 +26,19 @@ export const Contact = () => {
                     <h2>Wpisz swoją wiadomość</h2>
                     <textarea/>
                 </div>
+                <button type='submit'>Wyślij</button>
 
 
             </form>
-
+            <footer className='contact__footer'>
+                <div className='contact__footer__title'>
+                    Copyright by Coders Lab
+                </div>
+                <div className='contact__footer__images'>
+                    <img src={Facebook} alt='facebook' />
+                    <img src={Instagram} alt='instagram' />
+                </div>
+            </footer>
         </div>
     )
 }
