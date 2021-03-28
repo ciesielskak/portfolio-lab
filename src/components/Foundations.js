@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Decoration from '../assets/Decoration.svg'
 import {useStateValue} from "../context/StateProvider";
 import { db } from "../firebase/firebase";
+import ReactPaginate from 'react-paginate';
 
 
 export const Foundations = () => {
@@ -15,13 +16,13 @@ const { foundations, organizations, locals } = state;
                 <h1>Komu pomagamy?</h1>
                 <img src={Decoration} alt='decoration' />
                 <nav className='foundations__header__nav'>
-                    <a href='#foundations' id='foundations' onClick={() => dispatch({type: 'showFoundations'})} >
+                    <a id='foundations' onClick={() => dispatch({type: 'showFoundations'})} >
                         Fundacjom
                     </a>
-                    <a href='#organizations' id='organizations' onClick={() => dispatch({type: 'showOrganizations'})} >
+                    <a id='organizations' onClick={() => dispatch({type: 'showOrganizations'})} >
                         Organizacjom pozarządowym
                     </a>
-                    <a href='#local' id='local' onClick={() => dispatch({type: 'showLocals'})} >
+                    <a id='local' onClick={() => dispatch({type: 'showLocals'})} >
                         Lokalnym zbiórkom
                     </a>
                 </nav>
@@ -41,6 +42,27 @@ const { foundations, organizations, locals } = state;
 
 const FoundationList = () => {
     const [foundations, setFoundations] = useState([]);
+    const [page, setPage] = useState(0);
+    const itemsPerPage = 3;
+    const pagesVisited = page * itemsPerPage;
+    const displayItems = foundations
+        .slice(pagesVisited, pagesVisited + itemsPerPage)
+        .map((item) => (
+            <li key={item.name} className='foundations__content__list__item'>
+                <div>
+                    <h2>{item.name}</h2>
+                    <p>{item.aim}</p>
+                </div>
+                <span>{item.desc}</span>
+            </li>
+        ));
+
+    const pageCount = Math.ceil(foundations.length/itemsPerPage);
+
+    const changePage = ({ selected }) => {
+       setPage(selected)
+    }
+
 
     useEffect(() => {
         db.collection('lists')
@@ -58,30 +80,48 @@ const FoundationList = () => {
             ))
 
 
-    }, [])
+    }, []);
+
+
+
+
+
 
     return (
        <div className="foundations__content" id='foundations'>
            <ul className='foundations__content__list'>
                {
-                   foundations.map((item, index) => (
-                       <li key={index} className='foundations__content__list__item'>
-                           <div>
-                               <h2>{item.name}</h2>
-                               <p>{item.aim}</p>
-                           </div>
-                           <span>{item.desc}</span>
-                       </li>
-                   ))
+                    displayItems
                }
            </ul>
-
+           <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
        </div>
     )
 }
 
 const OrganizationsList = () => {
 const [organizations, setOrganizations] = useState([])
+    const [page, setPage] = useState(0);
+    const itemsPerPage = 3;
+    const pagesVisited = page * itemsPerPage;
+    const displayItems = organizations
+        .slice(pagesVisited, pagesVisited + itemsPerPage)
+        .map((item) => (
+            <li key={item.name} className='foundations__content__list__item'>
+                <div>
+                    <h2>{item.name}</h2>
+                    <p>{item.aim}</p>
+                </div>
+                <span>{item.desc}</span>
+            </li>
+        ));
+
+    const pageCount = Math.ceil(organizations.length/itemsPerPage);
+
+    const changePage = ({ selected }) => {
+        setPage(selected)
+    }
+
 
     useEffect(() => {
         db.collection('lists')
@@ -104,27 +144,40 @@ const [organizations, setOrganizations] = useState([])
         <div className="foundations__content" id='foundations'>
             <ul className='foundations__content__list'>
                 {
-                    organizations.map((item, index) => (
-                        <li key={index} className='foundations__content__list__item'>
-                            <div>
-                                <h2>{item.name}</h2>
-                                <p>{item.aim}</p>
-                            </div>
-                            <span>{item.desc}</span>
-                        </li>
-                    ))
+                   displayItems
                 }
 
 
             </ul>
-
+            <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
         </div>
     )
 }
 
 
 const LocalList = () => {
-    const [local, setLocal] = useState([])
+    const [local, setLocal] = useState([]);
+    const [page, setPage] = useState(0);
+    const itemsPerPage = 3;
+    const pagesVisited = page * itemsPerPage;
+    const displayItems = local
+        .slice(pagesVisited, pagesVisited + itemsPerPage)
+        .map((item) => (
+            <li key={item.name} className='foundations__content__list__item'>
+                <div>
+                    <h2>{item.name}</h2>
+                    <p>{item.aim}</p>
+                </div>
+                <span>{item.desc}</span>
+            </li>
+        ));
+
+    const pageCount = Math.ceil(local.length/itemsPerPage);
+
+    const changePage = ({ selected }) => {
+        setPage(selected)
+    }
+
     useEffect(() => {
         db.collection('lists')
             .doc('fj8kTxDJugTkwXL4uzi7')
@@ -157,6 +210,7 @@ const LocalList = () => {
                     ))
                 }
             </ul>
+            <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
         </div>
     )
 }
