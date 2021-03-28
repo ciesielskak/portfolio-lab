@@ -94,7 +94,9 @@ const FoundationList = () => {
                     displayItems
                }
            </ul>
-           <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
+           {foundations.length <= 3?
+               <ul></ul> :
+               <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>}
        </div>
     )
 }
@@ -149,7 +151,9 @@ const [organizations, setOrganizations] = useState([])
 
 
             </ul>
-            <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
+            {organizations.length <= 3?
+                <ul></ul> :
+                <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>}
         </div>
     )
 }
@@ -210,7 +214,10 @@ const LocalList = () => {
                     ))
                 }
             </ul>
-            <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>
+            {local.length <= 3?
+                <ul></ul> :
+                <ReactPaginate previousLabel={null} nextLabel={null} pageCount={pageCount} onPageChange={changePage}/>}
+
         </div>
     )
 }
