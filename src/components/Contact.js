@@ -30,11 +30,11 @@ export const Contact = () => {
       let emailError = '';
       let messageError = '';
 
-      if (form.name.includes(" ")) {
+      if (form.name.includes(" ") || form.name === '') {
           nameError = 'Podane imię jest niepoprawne!'
       }
       if (!form.email.includes('@')) {
-          emailError = 'Podany e-mail jest niepoprwany!'
+          emailError = 'Podany e-mail jest niepoprawny!'
       }
       if (form.message.length < 120) {
           messageError = 'Wiadomość musi mieć conajmniej 120 znaków!'
@@ -88,19 +88,19 @@ export const Contact = () => {
                 <div className='contact__form__inputWrapper'>
                 <div className='contact__form__inputs'>
                     <h2>Wpisz swoje imię</h2>
-                    <h2>{error.nameError}</h2>
-                    <input type='name' name='name' value={form.name} onChange={inputHandler}/>
+                    <input style={{borderBottom: error.nameError && '3px solid red'}} type='name' name='name' value={form.name} onChange={inputHandler}/>
+                    <h2 className='contact__form__inputs__error'>{error.nameError}</h2>
                 </div>
                 <div className='contact__form__inputs'>
                     <h2>Wpisz swój e-mail</h2>
-                    <h2 style={{color: 'red'}}>{error.emailError}</h2>
-                    <input type='email' name='email' value={form.email} onChange={inputHandler}/>
+                    <input style={{borderBottom: error.nameError && '3px solid red'}} type='email' name='email' value={form.email} onChange={inputHandler}/>
+                    <h2 className='contact__form__inputs__error'>{error.emailError}</h2>
                 </div>
                 </div>
                 <div className='contact__form__textarea'>
                     <h2>Wpisz swoją wiadomość</h2>
-                    {error.messageError}
-                    <textarea name='message' value={form.message} onChange={inputHandler}/>
+                    <textarea style={{borderBottom: error.nameError && '3px solid red'}} name='message' value={form.message} onChange={inputHandler}/>
+                    <h2 className='contact__form__inputs__error'>{error.messageError}</h2>
                 </div>
                 <button type='submit'>Wyślij</button>
 
