@@ -1,0 +1,29 @@
+.logout__success {
+  &__container {
+    width: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  &__card {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      text-align: center;
+      color: $main-font-color;
+      font-size: 2.5rem;
+      letter-spacing: -0.8px;
+    }
+    img {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+    a {
+
+    }
+  }
+}

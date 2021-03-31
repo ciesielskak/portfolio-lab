@@ -1,7 +1,8 @@
 export const initialState = {
     foundations: true,
     organizations: false,
-    locals: false
+    locals: false,
+    user: null
 }
 
 export const reducer = (state, action) => {
@@ -26,6 +27,11 @@ export const reducer = (state, action) => {
                  foundations: false,
                  organizations: false,
                  locals: true
+             }
+         case 'setUser' :
+             return {
+                 ...state,
+                 user: action.user
              }
          default:
              return state;

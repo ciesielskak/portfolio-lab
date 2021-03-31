@@ -63,13 +63,14 @@
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
-    button {
+    button, a {
       color: $main-font-color;
       font-size: 1.12rem;
-      border: none;
+      border: 2px solid transparent;
       width: 7em;
       padding: 10px;
       background: transparent;
+      text-decoration: none;
       &:hover {
         border: 2px solid $main-font-color;
         cursor: pointer;

@@ -57,8 +57,9 @@
           width: 80px;
           height: 2px;
           bottom: 0;
-          right: 20%;
-          background: $main-font-color;
+          left: 0;
+          transform: translateX(50%);
+          background: $form-font-color;
         }
       }
       span {

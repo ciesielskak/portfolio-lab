@@ -41,6 +41,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      &__sentInfo {
+        width: 60%;
+        color: #049804;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 30px;
+      }
     }
     h1 {
       font-size: 2.37rem;

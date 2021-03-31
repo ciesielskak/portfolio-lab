@@ -6,6 +6,7 @@ import Instagram from '../assets/Instagram.png'
 
 
 export const Contact = () => {
+    const [sent, setSent] = useState(false)
     const [form, setForm] = useState({
     name: '',
     email: '',
@@ -55,26 +56,43 @@ export const Contact = () => {
         e.preventDefault();
        const API = "http://localhost:3000";
 
-       const data = {
-           name: "Ania",
-           brand: "FSO"
-       };
        const isValid = validateForm();
        if (isValid) {
            fetch(`${API}/cars`, {
                method: "POST",
-               body: JSON.stringify(data),
+               body: JSON.stringify(form),
                headers: {
                    "Content-Type": "application/json"
                }
            })
-               .then(response => response.json())
+               .then(response => {
+                   if(response.ok) {
+                       setSent(prevState => !prevState);
+                   }
+
+                   return response.json()
+               }
+
+           )
                .then(data => {
-                   console.log(data);
-               })
+               console.log(data)
+           })
                .catch(error => {
                    console.log(error);
                });
+
+           setForm(prevState => ({
+               ...prevState,
+               name: '',
+               email: '',
+               message: ''
+           }));
+           setError(prevState => ({
+               ...prevState,
+               nameError: '',
+               emailError: '',
+               messageError: ''
+           }))
        }
     }
     return (
@@ -84,6 +102,7 @@ export const Contact = () => {
                     <h1>Skontaktuj się z nami
                         </h1>
                     <img src={Decoration} alt='decoration' />
+                    {sent && <span className='contact__form__header__sentInfo'>Wiadomość została wysłana! Wkrótce się skontaktujemy.</span>}
                 </div>
                 <div className='contact__form__inputWrapper'>
                 <div className='contact__form__inputs'>
@@ -93,13 +112,13 @@ export const Contact = () => {
                 </div>
                 <div className='contact__form__inputs'>
                     <h2>Wpisz swój e-mail</h2>
-                    <input style={{borderBottom: error.nameError && '3px solid red'}} type='email' name='email' value={form.email} onChange={inputHandler}/>
+                    <input style={{borderBottom: error.emailError && '3px solid red'}} type='email' name='email' value={form.email} onChange={inputHandler}/>
                     <h2 className='contact__form__inputs__error'>{error.emailError}</h2>
                 </div>
                 </div>
                 <div className='contact__form__textarea'>
                     <h2>Wpisz swoją wiadomość</h2>
-                    <textarea style={{borderBottom: error.nameError && '3px solid red'}} name='message' value={form.message} onChange={inputHandler}/>
+                    <textarea style={{borderBottom: error.messageError && '3px solid red'}} name='message' value={form.message} onChange={inputHandler}/>
                     <h2 className='contact__form__inputs__error'>{error.messageError}</h2>
                 </div>
                 <button type='submit'>Wyślij</button>
