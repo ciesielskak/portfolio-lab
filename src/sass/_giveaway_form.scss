@@ -23,5 +23,64 @@
         }
       }
     }
+    &__stepone {
+      height: 90vh;
+      width: 100%;
+      max-width: 1600px;
+      padding: 50px 50px;
+      background-image: url("../assets/Background-Form.png");
+      background-size: cover;
+      color: $main-font-color;
+      &__inputs {
+        h1 {
+          font-weight: 600;
+          font-size: 2rem;
+          color: black;
+        }
+      }
+      &__inputWrapper {
+        display: flex;
+        align-items: center;
+        margin: 30px 0;
+        input {
+          margin: 0;
+          position: relative;
+          &:checked {
+            background: $column-gold;
+          }
+
+        }
+
+        p {
+          font-size: 1.3rem;
+          font-weight: 300;
+          color: black;
+          margin-left: 10px;
+        }
+      }
+      &__main {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h3 {
+          font-weight: 300;
+          font-size: 1.5rem;
+          align-self: flex-start;
+        }
+        button {
+          width: 7em;
+          border: 2px solid $form-font-color;
+          font-size: 1.3rem;
+          color: black;
+          font-weight: 300;
+          background: transparent;
+          cursor: pointer;
+          padding: 10px;
+
+        }
+      }
+    }
   }
 }
