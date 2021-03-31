@@ -1,0 +1,80 @@
+.giveaway__home {
+  &__container {
+    width: 100%;
+    min-height: 90vh;
+    max-width: 1600px;
+    box-sizing: border-box;
+    display: grid;
+    color: $main-font-color;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0 0;
+    grid-template-areas:
+    "img img . ."
+    "img img div div"
+    "img img div div";
+  }
+  &__background {
+    background-image: url("../assets/Header-Form-Background.png");
+    grid-area: img;
+    background-size: cover;
+  }
+  &__info {
+    grid-area: div;
+    margin-right: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    h1 {
+      font-size: 2.2rem;
+      width: 90%;
+      letter-spacing: -0.76px;
+      line-height: initial;
+    }
+    img {
+      margin: 20px 0;
+    }
+    p {
+      font-size: 2rem;
+      font-weight: 200;
+      margin-bottom: 40px;
+    }
+    &__steps {
+      display: flex;
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
+        font-weight: 200;
+        span:first-child {
+          margin-bottom: 20px;
+          font-size: 1.2rem;
+        }
+        span:last-child {
+          align-self: center;
+          width: 70%;
+
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border: 2px solid $main-font-color;
+          transform: rotate(45deg);
+
+
+
+        }
+      }
+    }
+  }
+
+}

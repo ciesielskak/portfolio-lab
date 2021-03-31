@@ -24,6 +24,7 @@ export const NavRouteLinks = () => {
             {
                 user?
                     <div className='home__navigation__btns'>
+                        <p>Cześć</p>
                         <p>{user?.email}</p>
                         <Link to='/giveaway' style={{fontWeight: 600}}>Oddaj rzeczy</Link>
                         <Link to='/logout-successful' onClick={signOutUser}>Wyloguj</Link>

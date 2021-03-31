@@ -30,10 +30,17 @@ const LoginCard = () => {
             })
             .catch((error) => {
                 console.log(error.code)
-            });
+            })
+        .then(() => {
+            clearInputs()
+        })
         console.log(user)
     }
 
+    const clearInputs = () => {
+        setEmail('');
+        setPassword('');
+    }
     return (
         <div className='login__card'>
             <h1>Zaloguj się</h1>

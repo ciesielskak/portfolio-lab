@@ -2,7 +2,8 @@ export const initialState = {
     foundations: true,
     organizations: false,
     locals: false,
-    user: null
+    user: null,
+    radio: ''
 }
 
 export const reducer = (state, action) => {
@@ -32,6 +33,11 @@ export const reducer = (state, action) => {
              return {
                  ...state,
                  user: action.user
+             }
+         case 'setRadio' :
+             return {
+                 ...state,
+                 radio: action.payload
              }
          default:
              return state;

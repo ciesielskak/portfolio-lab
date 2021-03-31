@@ -3,14 +3,13 @@ import Decoration from '../assets/Decoration.svg'
 
 export const GiveAwayHome = () => {
     return (
-        <div className='giveaway__home'>
+        <div className='giveaway__home__container'>
             <div className='giveaway__home__background'>
-
             </div>
             <div className='giveaway__home__info'>
                 <h1>Oddaj rzeczy, których już nie chcesz POTRZEBUJĄCYM</h1>
                 <img src={Decoration} alt='decoration' />
-                <h2>Wystarczą 4 proste kroki:</h2>
+                <p>Wystarczą 4 proste kroki:</p>
                 <div className='giveaway__home__info__steps'>
                     <div>
                         <span>1</span>

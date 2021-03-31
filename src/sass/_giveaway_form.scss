@@ -1,0 +1,27 @@
+.giveaway {
+  &__form {
+    height: 100vh;
+    width: 100%;
+    max-width: 1600px;
+    &__important {
+      height: 20vh;
+      width: 100%;
+      max-width: 1600px;
+      background: $column-gold;
+      display: flex;
+      align-items: center;
+      &__card {
+        margin: auto 50px;
+        h1 {
+          color: black;
+          font-size: 2.2rem ;
+          margin-bottom: 20px;
+          font-weight: 600;
+        }
+        p {
+          color: $main-font-color;
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import React from "react";
 import { HomeMainInfo } from "./HomeMainInfo";
-import {HomeThreeColumns} from "./HomeThreeColumns";
-import Things from '../assets/Hero Image.png'
-import {HomeHeader} from "./HomeHeader";
+
 
 
 export const HomeWelcome = () => {
