@@ -2,6 +2,7 @@ import Decoration from "../assets/Decoration.svg";
 import React, { useState, useEffect } from "react";
 import { auth } from "../firebase/firebase";
 import {useStateValue} from "../context/StateProvider";
+import { Link } from "react-router-dom";
 
 export const SignUp = () => {
     return (
@@ -140,7 +141,7 @@ console.log(user)
                            <span>{error.unevenError}</span>
                 </div>
                 <div className='login__btns'>
-                    <button>Zaloguj</button>
+                    <Link to='/login'>Zaloguj</Link>
                     <button onClick={registerUser}>Załóż konto</button>
                 </div>
             </form>

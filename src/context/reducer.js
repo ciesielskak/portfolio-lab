@@ -3,7 +3,8 @@ export const initialState = {
     organizations: false,
     locals: false,
     user: null,
-    radio: ''
+    radio: '',
+    selectBag: null
 }
 
 export const reducer = (state, action) => {
@@ -38,6 +39,11 @@ export const reducer = (state, action) => {
              return {
                  ...state,
                  radio: action.payload
+             }
+         case 'selectBags' :
+             return {
+                 ...state,
+                 selectBag: action.payload
              }
          default:
              return state;

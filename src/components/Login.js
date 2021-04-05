@@ -15,6 +15,8 @@ export const Login = () => {
 
 const LoginCard = () => {
     const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('')
     const [password, setPassword] = useState('')
     const [state, dispatch] = useState('');
     const { user } = state;
@@ -29,6 +31,12 @@ const LoginCard = () => {
                })
             })
             .catch((error) => {
+                if (error.code === 'auth/invalid-email') {
+                    setEmailError('Emai jest nieprawidłowy')
+                }
+                if (error.code === 'auth/wrong-password') {
+                    setPasswordError('Hasło jest nieprawidłowe')
+                }
                 console.log(error.code)
             })
         .then(() => {
@@ -50,9 +58,11 @@ const LoginCard = () => {
                     <h2>Email
                 </h2>
                     <input type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <p>{emailError}</p>
                     <h2>Hasło
                 </h2>
                     <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <p>{passwordError}</p>
                 </div>
                 <div className='login__btns'>
                     <button onClick={signInUser}>Zaloguj</button>
