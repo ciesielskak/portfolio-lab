@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Decoration from '../assets/Decoration.svg';
 import { auth } from "../firebase/firebase";
 import {SignUp} from "./SignUp";
-import { Link } from "react-router-dom";
+import {Link, Redirect, useHistory} from "react-router-dom";
 
 
 export const Login = () => {
@@ -20,6 +20,7 @@ const LoginCard = () => {
     const [password, setPassword] = useState('')
     const [state, dispatch] = useState('');
     const { user } = state;
+    const history = useHistory();
 
     const signInUser = (e) => {
         e.preventDefault();
@@ -30,18 +31,23 @@ const LoginCard = () => {
                    user: userCredential.user
                })
             })
+            .then(() => {
+                clearInputs()
+            })
+            .then(() => {
+                if(user) {
+                    history.push('/')
+                }
+            })
             .catch((error) => {
                 if (error.code === 'auth/invalid-email') {
-                    setEmailError('Emai jest nieprawidłowy')
+                    setEmailError('Email jest nieprawidłowy')
                 }
                 if (error.code === 'auth/wrong-password') {
                     setPasswordError('Hasło jest nieprawidłowe')
                 }
                 console.log(error.code)
             })
-        .then(() => {
-            clearInputs()
-        })
         console.log(user)
     }
 
