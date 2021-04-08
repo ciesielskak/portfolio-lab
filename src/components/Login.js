@@ -30,14 +30,7 @@ const LoginCard = () => {
                    type: 'setUser',
                    user: userCredential.user
                })
-            })
-            .then(() => {
-                clearInputs()
-            })
-            .then(() => {
-                if(user) {
-                    history.push('/')
-                }
+                clearInputs();
             })
             .catch((error) => {
                 if (error.code === 'auth/invalid-email') {
@@ -48,6 +41,7 @@ const LoginCard = () => {
                 }
                 console.log(error.code)
             })
+
         console.log(user)
     }
 

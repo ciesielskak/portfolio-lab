@@ -28,6 +28,12 @@
       background-image: url("../assets/Background-Form.png");
       background-size: cover;
       color: $main-font-color;
+      &__error {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: red;
+      }
       &__org {
         width: 50%;
         input {
@@ -57,8 +63,10 @@
           font-size: 1rem;
           padding: 5px 50px 5px 5px;
           outline: none;
+          cursor: pointer;
           option {
             background: transparent;
+            cursor: pointer;
           }
         }
       }
@@ -185,7 +193,6 @@
       height: 100%;
       left: 0;
       top: 0;
-
     }
   }
 }

@@ -12,9 +12,11 @@ export const initialState = {
         kids: '',
         handicapped: '',
         elderly: '',
+    exactLocalization: '',
     stepOne: true,
     stepTwo: false,
-    stepThree: false
+    stepThree: false,
+    stepFour: false
 }
 
 export const reducer = (state, action) => {
@@ -85,6 +87,11 @@ export const reducer = (state, action) => {
                  ...state,
                  homeless: action.payload
              }
+         case 'exactLocalization' :
+             return {
+                 ...state,
+                 exactLocalization: action.payload
+             }
 
          case 'showStepOne' :
              return {
@@ -106,6 +113,14 @@ export const reducer = (state, action) => {
                  stepOne: false,
                  stepTwo: false,
                  stepThree: true
+             }
+         case 'showStepFour' :
+             return {
+                 ...state,
+                 stepOne: false,
+                 stepTwo: false,
+                 stepThree: false,
+                 stepFour: true
              }
          default:
              return state;

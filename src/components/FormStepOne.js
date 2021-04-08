@@ -96,6 +96,8 @@ export const FormStepOne = () => {
 
 export const FormStepTwo = () => {
     const [state, dispatch] = useStateValue();
+    const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState('')
     const { selectBag } = state;
 
     return (
@@ -115,6 +117,7 @@ export const FormStepTwo = () => {
                             <div className='giveaway__form__steps__select-section'>
                                 <h2>Liczba 60l worków:</h2>
                                 <div className='giveaway__form__steps__selectBox'>
+                                    <p className='giveaway__form__steps__error'>{error}</p>
                                     <select onChange={(e) => dispatch({type: 'selectBags', payload: e.target.value})}>
                                     <option value=''>--wybierz--</option>
                                     <option value={1}>1</option>
@@ -130,7 +133,10 @@ export const FormStepTwo = () => {
                     <button onClick={() => dispatch({type: 'showStepOne'})}>Wstecz</button>
                     {
                         !selectBag? (
-                            <button disabled={true}>Dalej</button>
+                            <button disabled={disabled} onClick={() => {
+                                setError('Wybierz wartość!');
+                                setDisabled(true)
+                            }}>Dalej</button>
                         ) : (
                             <button onClick={() => dispatch({type: 'showStepThree'})}>Dalej</button>
                         )
@@ -145,9 +151,15 @@ export const FormStepTwo = () => {
 }
 
 export const FormStepThree = () => {
-    const [checked, setChecked] = useState(false)
+    const [checkedElderly, setCheckedElderly] = useState(false);
+    const [checkedSingleMoms, setCheckedSingleMoms] = useState(false);
+    const [checkedHomeless, setCheckedHomeless] = useState(false);
+    const [checkedHandicapped, setCheckedHandicapped] = useState(false);
+    const [checkedKids, setCheckedKids] = useState(false);
+    const [disabled, setDisabled] = useState(false)
+    const [error, setError] = useState('');
     const [state, dispatch] = useStateValue();
-    const { city, elderly, singleMoms, handicapped, homeless, kids } = state;
+    const { city, elderly, singleMoms, handicapped, homeless, kids, exactLocalization } = state;
     return (
         <>
             <div className='giveaway__form__important'>
@@ -173,52 +185,110 @@ export const FormStepThree = () => {
                             <option value='Wrocław'>Wrocław</option>
                         </select>
                         <h2>Komu chcesz pomóc?</h2>
+                        <p className='giveaway__form__steps__error'>{error}</p>
                         <div className='giveaway__form__checkbox'>
                                 <input type='checkbox'
                                        className='checkbox__input'
-                                       value='kids'
+                                       value={!checkedKids? 'dzieciom' : ''}
                                        id='kids'
-                                       onChange={(e) => dispatch({type: 'helpKids', payload: e.target.value})} />
+                                       onChange={(e) => {
+                                           setCheckedKids(prevState => !prevState);
+                                           dispatch({
+                                               type: 'helpKids',
+                                               payload: e.target.value
+                                           })
+                                       }} />
                                 <label htmlFor='kids' className='checkbox__label'>dzieciom</label>
                                 <input type='checkbox'
                                        id='singlemoms'
                                        className='checkbox__input'
-                                       value='samotnym matkom'
-                                       onChange={(e) => dispatch({type:'helpSingleMoms', singleMoms: e.target.value})} />
+                                       value={!checkedSingleMoms ? 'samotnym matkom' : ''}
+                                       onChange={(e) => {
+                                           setCheckedSingleMoms(prevState => !prevState);
+                                           dispatch({
+                                               type: 'helpSingleMoms',
+                                               payload: e.target.value
+                                           })
+                                       }}/>
                                 <label htmlFor='singlemoms' className='checkbox__label'>samotnym matkom</label>
                                 <input type='checkbox'
                                        id='homeless'
                                        className='checkbox__input'
-                                       value='bezdomnym'
-                                       onChange={(e) => dispatch({type: 'helpHomeless', payload: e.target.value})} />
+                                       value={!checkedHomeless? 'bezdomnym' : ''}
+                                       onChange={(e) => {
+                                           setCheckedHomeless(prevState => !prevState);
+                                           dispatch({
+                                               type: 'helpHomeless',
+                                               payload: e.target.value
+                                           })
+                                       }} />
                                 <label htmlFor='homeless' className='checkbox__label'>osobom bezdomnym</label>
                                 <input type='checkbox'
                                        id='handicapped'
                                        className='checkbox__input'
-                                       value='niepełnosprawnym'
-                                       onChange={(e) => dispatch({type: 'helpHandicapped', payload: e.target.value})} />
+                                       value={!checkedHandicapped? 'niepełnosprawnym' : ''}
+                                       onChange={(e) => {
+                                           setCheckedHandicapped(prevState => !prevState);
+                                           dispatch({
+                                               type: 'helpHandicapped',
+                                               payload: e.target.value
+                                           })
+                                       }} />
                                 <label htmlFor='handicapped' className='checkbox__label'>niepełnosprawnym</label>
                                 <input type='checkbox'
-                                       value='osobom starszym'
+                                       value={!checkedElderly? 'osobom starszym' : '' }
                                        id='elderly'
-                                       checked={checked}
                                        className='checkbox__input'
-                                       onChange={(e) => {
-                                           setChecked(prevState => !prevState);
-                                       }}/>
-                            <label htmlFor='elderly' className='checkbox__label'>osobom starszym</label>
+                            onChange={(e) => {
+                                setCheckedElderly(prevState => !prevState);
+                                dispatch({
+                                type: 'helpElderly',
+                                payload: e.target.value
+                            })
+                            }}/>
+                                <label htmlFor='elderly' className='checkbox__label'>osobom starszym</label>
                         </div>
                         <div className='giveaway__form__steps__org'>
                             <h2>Wpisz nazwę konkretnej organizacji (opcjonalnie)</h2>
-                            <input type='text' className='input__text'/>
+                            <input type='text'
+                                   className='input__text'
+                                   value={exactLocalization}
+                                   onChange={(e) => dispatch({type: 'exactLocalization', payload: e.target.value})}/>
                         </div>
                     </div>
                     <div className='giveaway__form__steps__btns'>
                         <button onClick={() => dispatch({type: 'showStepTwo'})}>Wstecz</button>
-                        <button>Dalej</button>
+                        {
+                            checkedElderly && checkedSingleMoms && checkedKids && checkedHomeless && checkedHandicapped === false ? (
+                                <button disabled={disabled} onClick={() => {
+                                setError('Wybierz przynajmniej jedną opcję!');
+                                setDisabled(true)}} />
+                            ) : (
+                                <button onClick={() => dispatch({type: 'showStepFour'})}>Dalej</button>
+                            )
+                        }
                     </div>
                 </div>
             </div>
         </>
+    )
+}
+
+export const FormStepFour = () => {
+    return (
+        <>
+            <div className='giveaway__form__important'>
+                <div className='giveaway__form__important__card'>
+                    <h1>Ważne!</h1>
+                    <p>Uzupełnij szczegóły dotyczące Twoich rzeczy.
+                        Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.</p>
+                </div>
+            </div>
+            <div className='giveaway__form__steps'>
+                <div className='giveaway__form__steps__main'>
+                </div>
+            </div>
+            </>
+
     )
 }
