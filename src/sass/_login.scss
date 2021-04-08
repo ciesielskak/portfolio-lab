@@ -57,6 +57,11 @@
         margin-top: 20px;
       }
     }
+    &__error {
+      color: red;
+      margin-top: 8px;
+      font-size: 0.8rem;
+    }
   }
   &__btns {
     width: 130%;

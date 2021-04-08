@@ -15,10 +15,10 @@
     background-image: url("../assets/Background Image.png");
     background-size: cover;
     position: absolute;
-    top: 60px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     opacity: 0.4;
   }
   }
@@ -77,6 +77,7 @@
         color: red;
         margin-top: 8px;
         font-size: 0.8rem;
+        font-weight: bold;
       }
     }
     input, textarea {
@@ -112,16 +113,14 @@
     }
   }
   &__footer {
-
     position: relative;
     padding: 10px;
-    height: 10vh;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     justify-content: center;
-
     &__title {
       color: #3C3C3C;
 

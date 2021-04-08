@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FormStepOne, FormStepThree, FormStepTwo, FormStepFour, Summary } from "./FormStepOne";
+import { FormStepOne, FormStepThree, FormStepTwo, FormStepFour, Summary } from "./FormSteps";
 import { useStateValue } from "../context/StateProvider";
 
 export const GiveAwayForm = () => {
@@ -13,7 +13,6 @@ export const GiveAwayForm = () => {
             {stepThree && <FormStepThree />}
             {stepFour && <FormStepFour />}
             {summary && <Summary />}
-
         </div>
     )
 }

@@ -31,6 +31,8 @@ const LoginCard = () => {
                    user: userCredential.user
                })
                 clearInputs();
+               setEmailError('');
+               setPasswordError('')
             })
             .catch((error) => {
                 if (error.code === 'auth/invalid-email') {
@@ -58,11 +60,11 @@ const LoginCard = () => {
                     <h2>Email
                 </h2>
                     <input type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    <p>{emailError}</p>
+                    <p className='login__inputs__error'>{emailError}</p>
                     <h2>Hasło
                 </h2>
                     <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    <p>{passwordError}</p>
+                    <p className='login__inputs__error'>{passwordError}</p>
                 </div>
                 <div className='login__btns'>
                     <button onClick={signInUser}>Zaloguj</button>

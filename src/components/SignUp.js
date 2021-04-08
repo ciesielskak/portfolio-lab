@@ -72,20 +72,19 @@ const clearErrors = () => {
                         user: userCredential.user
                     })
                 })
-
+                .then(() => {
+                    clearErrors()
+                    clearInputs()
+                    setInvalidEmail('')
+                })
                 .catch(err => {
-                    if (err.code === 'auth/email-already-exists') {
-                        setInvalidEmail(err.message)
+                    if (err.code === 'auth/email-already-in-use') {
+                        setInvalidEmail('Konto już istnieje')
                     }
                 })
-                .then(() => {
-                    clearInputs();
 
-                })
-                .then(() => {
-                    clearErrors();
-                })
-console.log(user)
+
+
         }
 
     }
@@ -127,18 +126,18 @@ console.log(user)
                     </h2>
                     <input type='email' value={email}
                            onChange={(e) => setEmail(e.target.value)} name='email'/>
-                           <span>{error.emailError}</span>
-                    <span>{invalidEmail}</span>
+                           <p className='login__inputs__error'>{invalidEmail}</p>
+                    <p className='login__inputs__error'>{error.emailError}</p>
                     <h2>Hasło
                     </h2>
                     <input type='password' value={password}
                            onChange={(e) => setPassword(e.target.value)} name='passwordFirst'/>
-                           <span>{error.passwordError}</span>
+                           <p className='login__inputs__error'>{error.passwordError}</p>
                     <h2>Powtórz hasło
                     </h2>
                     <input type='password' value={confirmPassword}
                            onChange={(e) => setConfirmPassword(e.target.value)} name='passwordSecond'/>
-                           <span>{error.unevenError}</span>
+                           <p className='login__inputs__error'>{error.unevenError}</p>
                 </div>
                 <div className='login__btns'>
                     <Link to='/login'>Zaloguj</Link>

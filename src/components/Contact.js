@@ -58,7 +58,7 @@ export const Contact = () => {
 
        const isValid = validateForm();
        if (isValid) {
-           fetch(`${API}/cars`, {
+           fetch(`${API}/form`, {
                method: "POST",
                body: JSON.stringify(form),
                headers: {
@@ -122,8 +122,6 @@ export const Contact = () => {
                     <h2 className='contact__form__inputs__error'>{error.messageError}</h2>
                 </div>
                 <button type='submit'>Wyślij</button>
-
-
             </form>
             <footer className='contact__footer'>
                 <div className='contact__footer__title'>

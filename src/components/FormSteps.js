@@ -194,6 +194,7 @@ export const FormStepThree = () => {
                                        className='checkbox__input'
                                        value={!checkedKids? 'dzieciom' : ''}
                                        id='kids'
+                                       checked={checkedKids}
                                        onChange={(e) => {
                                            setCheckedKids(prevState => !prevState);
                                            dispatch({
@@ -204,6 +205,7 @@ export const FormStepThree = () => {
                                 <label htmlFor='kids' className='checkbox__label'>dzieciom</label>
                                 <input type='checkbox'
                                        id='singlemoms'
+                                       checked={checkedSingleMoms}
                                        className='checkbox__input'
                                        value={!checkedSingleMoms ? 'samotnym matkom' : ''}
                                        onChange={(e) => {
@@ -216,6 +218,7 @@ export const FormStepThree = () => {
                                 <label htmlFor='singlemoms' className='checkbox__label'>samotnym matkom</label>
                                 <input type='checkbox'
                                        id='homeless'
+                                       checked={checkedHomeless}
                                        className='checkbox__input'
                                        value={!checkedHomeless? 'bezdomnym' : ''}
                                        onChange={(e) => {
@@ -229,6 +232,7 @@ export const FormStepThree = () => {
                                 <input type='checkbox'
                                        id='handicapped'
                                        className='checkbox__input'
+                                       checked={checkedHandicapped}
                                        value={!checkedHandicapped? 'niepełnosprawnym' : ''}
                                        onChange={(e) => {
                                            setCheckedHandicapped(prevState => !prevState);
@@ -242,6 +246,7 @@ export const FormStepThree = () => {
                                        value={!checkedElderly? 'osobom starszym' : '' }
                                        id='elderly'
                                        className='checkbox__input'
+                                       checked={checkedElderly}
                             onChange={(e) => {
                                 setCheckedElderly(prevState => !prevState);
                                 dispatch({
