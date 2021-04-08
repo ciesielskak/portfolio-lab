@@ -7,12 +7,19 @@ export const initialState = {
     radio: '',
     selectBag: '',
     city: '',
-        homeless: '',
-        singleMoms: '',
-        kids: '',
-        handicapped: '',
-        elderly: '',
+    homeless: '',
+    singleMoms: '',
+    kids: '',
+    handicapped: '',
+    elderly: '',
     exactLocalization: '',
+    userStreet: '',
+    userPostalCode: '',
+    userCity: '',
+    userPhone: '',
+    pickUpDate: '',
+    pickUpTime: '',
+    msgToDeliveryGuy: '',
     stepOne: true,
     stepTwo: false,
     stepThree: false,
@@ -92,27 +99,64 @@ export const reducer = (state, action) => {
                  ...state,
                  exactLocalization: action.payload
              }
-
+         case 'setUserStreet' :
+             return {
+                 ...state,
+                 userStreet: action.payload
+             }
+         case 'setUserPostalCode' :
+             return {
+                 ...state,
+                 userPostalCode: action.payload
+             }
+         case 'setUserCity' :
+             return {
+                 ...state,
+                 userCity: action.payload
+             }
+         case 'setUserPhone' :
+             return {
+                 ...state,
+                 userPhone: action.payload
+             }
+         case 'setPickUpDate':
+             return {
+                 ...state,
+                 pickUpDate: action.payload
+             }
+         case 'setPickUpTime' :
+             return {
+                 ...state,
+                 pickUpTime: action.payload
+             }
+         case 'setMsgToDeliveryGuy' :
+             return {
+                 ...state,
+                 msgToDeliveryGuy: action.payload
+             }
          case 'showStepOne' :
              return {
                  ...state,
                  stepOne: true,
                  stepTwo: false,
-                 stepThree: false
+                 stepThree: false,
+                 stepFour: false
              }
          case 'showStepTwo' :
              return {
                  ...state,
                  stepOne: false,
                  stepTwo: true,
-                 stepThree: false
+                 stepThree: false,
+                 stepFour: false
              }
          case 'showStepThree' :
              return {
                  ...state,
                  stepOne: false,
                  stepTwo: false,
-                 stepThree: true
+                 stepThree: true,
+                 stepFour: false
              }
          case 'showStepFour' :
              return {

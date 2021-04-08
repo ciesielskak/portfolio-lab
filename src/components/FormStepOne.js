@@ -276,6 +276,7 @@ export const FormStepThree = () => {
 
 export const FormStepFour = () => {
     const [state, dispatch] = useStateValue();
+    const { userStreet, userCity, userPhone, userPostalCode, pickUpDate, pickUpTime, msgToDeliveryGuy } = state;
     return (
         <>
             <div className='giveaway__form__important'>
@@ -296,40 +297,53 @@ export const FormStepFour = () => {
                                 <h3>Adres odbioru:</h3>
                                 <label>
                                     <p>Ulica</p>
-                                    <input type='text' />
+                                    <input type='text'
+                                           value={userStreet}
+                                           onChange={(e) => dispatch({type: 'setUserStreet', payload: e.target.value})}/>
                                 </label>
                                 <label>
                                     <p>Miasto</p>
-                                    <input type='text' />
+                                    <input type='text'
+                                            value={userCity}
+                                            onChange={(e)=> dispatch({type: 'setUserCity', payload: e.target.value})}/>
                                 </label>
                                 <label>
                                     <p>Kod pocztowy</p>
-                                    <input type='postal' />
+                                    <input type='postal'
+                                            value={userPostalCode}
+                                            onChange={(e) => dispatch({type: 'setUserPostalCode', payload: e.target.value})}/>
                                 </label>
                                 <label>
                                     <p>Numer telefonu</p>
-                                    <input type='number' />
+                                    <input type='number'
+                                           value={userPhone}
+                                           onChange={(e) => dispatch({type: 'setUserPhone', payload: e.target.value})}/>
                                 </label>
                             </div>
                             <div className='giveaway__form__steps__inputs__last__data'>
                                 <h3>Termin odbioru:</h3>
                                 <label>
                                    <p>Data</p>
-                                    <input type='date' />
+                                    <input type='date'
+                                           value={pickUpDate}
+                                           onChange={(e) => dispatch({type: 'setPickUpDate', payload: e.target.value})}/>
                                 </label>
                                 <label>
                                     <p>Godzina</p>
-                                    <input type='time' />
+                                    <input type='time' value={pickUpTime}
+                                           onChange={(e) => dispatch({type: 'setPickUpTime', payload: e.target.value})}/>
                                 </label>
                                 <label>
                                     <p>Uwagi dla kuriera</p>
-                                    <input type='textarea' />
+                                    <input type='textarea'
+                                           value={msgToDeliveryGuy}
+                                           onChange={(e) => dispatch({type: 'setMsgToDeliveryGuy', payload: e.target.value})}/>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <div className='giveaway__form__steps__btns'>
-                        <button onClick={() => dispatch()}>Wstecz</button>
+                        <button onClick={() => dispatch({type:'showStepThree'})}>Wstecz</button>
                        <button>Dalej</button>
                     </div>
                 </div>
