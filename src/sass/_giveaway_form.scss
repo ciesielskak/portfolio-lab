@@ -28,6 +28,26 @@
       background-image: url("../assets/Background-Form.png");
       background-size: cover;
       color: $main-font-color;
+      &__successful {
+        height: 100%;
+        &__main{
+          height: 100%;
+          width: 70%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          h1 {
+            font-size: 2.7rem;
+            font-weight: 300;
+            line-height: 55px;
+            width:75%;
+            text-align: center;
+            margin-bottom: 30px;
+          }
+        }
+
+      }
       &__error {
         font-size: 0.8rem;
         font-weight: 600;

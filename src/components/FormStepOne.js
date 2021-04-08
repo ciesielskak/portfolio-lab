@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useStateValue} from "../context/StateProvider";
 import IconShirt from '../assets/Icon.png'
 import IconReuse from '../assets/Icon2.png'
+import Decoration from '../assets/Decoration.svg'
 import { db } from "../firebase/firebase";
 
 
@@ -413,6 +414,7 @@ export const FormStepFour = () => {
 
 export const Summary = () => {
     const [state, dispatch] = useStateValue();
+    const [sent, setSent] = useState(false)
     const { user, radio, selectBag, city, kids, elderly, singleMoms, handicapped, homeless, exactLocalization, userStreet, userCity, userPhone,
     userPostalCode, pickUpDate, pickUpTime, msgToDeliveryGuy} = state;
 
@@ -423,7 +425,7 @@ export const Summary = () => {
                 typeOfThings: radio,
                 bagsCount: selectBag,
                 city: city,
-                helpFor: kids, elderly, singleMoms, handicapped, homeless,
+                helpFor: kids + elderly + singleMoms + handicapped + homeless,
                 exactLocalization: exactLocalization,
                 userStreet: userStreet,
                 userCity: userCity,
@@ -433,69 +435,88 @@ export const Summary = () => {
                 pickUpTime: pickUpTime,
                 msgToDeliveryGuy: msgToDeliveryGuy,
             })
+        setSent(true)
+
     }
 
     return (
-            <div className='giveaway__form__steps'>
-                <div className='giveaway__form__steps__main'>
-                    <div className='giveaway__form__steps__inputs'>
-                    <h1>Podsumowanie Twojej darowizny</h1>
-                        <h2>Oddajesz:</h2>
-                        <div className='giveaway__form__steps__inputs__summary'>
-                            <img src={IconShirt} alt='shirt' />
-                            <p>{selectBag} worki, {radio} {kids && `, ${kids}`}{elderly && `, ${elderly}`}
-                            {homeless && `, ${homeless}`}{singleMoms&& `, ${singleMoms}`}{handicapped && `, ${handicapped}`}</p>
+        <>
+        {
+            sent? (
+                <div className='giveaway__form__steps'>
+                    <div className='giveaway__form__steps__successful'>
+                        <div className='giveaway__form__steps__successful__main'>
+                        <h1>Dziękujemy za przesłanie formularza
+                            Na maila prześlemy wszelkie informacje o odbiorze.</h1>
+                        <img src={Decoration} alt='decoration' />
                         </div>
-                        <div className='giveaway__form__steps__inputs__summary'>
-                            <img src={IconReuse} alt='reuse' />
-                            <p>Dla lokalizacji: {city}</p>
-                        </div>
-                        <div className='giveaway__form__steps__inputs__summary__address_pickup'>
-                            <div className='giveaway__form__steps__inputs__summary__address'>
-                                <h2>
-                                    Adres odbioru:
-                                </h2>
-                                <div className='giveaway__form__steps__inputs__summary__address__details'>
-                                    <p>Ulica</p>
-                                    <span>{userStreet}</span>
-                                </div>
-                                <div className='giveaway__form__steps__inputs__summary__address__details'>
-                                    <p>Miasto</p>
-                                    <span>{userCity}</span>
-                                </div>
-                                <div className='giveaway__form__steps__inputs__summary__address__details'>
-                                    <p>Kod pocztowy</p>
-                                    <span>{userPostalCode}</span>
-                                </div>
-                                <div className='giveaway__form__steps__inputs__summary__address__details'>
-                                    <p>Numer telefonu</p>
-                                    <span>{userPhone}</span>
-                                </div>
-                            </div>
-                            <div className='giveaway__form__steps__inputs__summary__pickup'>
-                                <h2>
-                                    Termin odbioru:
-                                </h2>
-                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
-                                    <p>Data</p>
-                                    <span>{pickUpDate}</span>
-                                </div>
-                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
-                                    <p>Godzina</p>
-                                    <span>{pickUpTime}</span>
-                                </div>
-                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
-                                    <p>Uwagi dla kuriera</p>
-                                    <span>{msgToDeliveryGuy}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='giveaway__form__steps__btns'>
-                        <button onClick={() => dispatch({type: 'showStepFour'})}>Wstecz</button>
-                        <button onClick={sendForm}>Potwierdzam</button>
                     </div>
                 </div>
-            </div>
+            ) : (
+                <div className='giveaway__form__steps'>
+                    <div className='giveaway__form__steps__main'>
+                        <div className='giveaway__form__steps__inputs'>
+                            <h1>Podsumowanie Twojej darowizny</h1>
+                            <h2>Oddajesz:</h2>
+                            <div className='giveaway__form__steps__inputs__summary'>
+                                <img src={IconShirt} alt='shirt' />
+                                <p>{selectBag} worki, {radio}{kids && `, ${kids}`}{elderly && `, ${elderly}`}
+                                    {homeless && `, ${homeless}`}{singleMoms&& `, ${singleMoms}`}{handicapped && `, ${handicapped}`}</p>
+                            </div>
+                            <div className='giveaway__form__steps__inputs__summary'>
+                                <img src={IconReuse} alt='reuse' />
+                                <p>Dla lokalizacji: {city}</p>
+                            </div>
+                            <div className='giveaway__form__steps__inputs__summary__address_pickup'>
+                                <div className='giveaway__form__steps__inputs__summary__address'>
+                                    <h2>
+                                        Adres odbioru:
+                                    </h2>
+                                    <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                        <p>Ulica</p>
+                                        <span>{userStreet}</span>
+                                    </div>
+                                    <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                        <p>Miasto</p>
+                                        <span>{userCity}</span>
+                                    </div>
+                                    <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                        <p>Kod pocztowy</p>
+                                        <span>{userPostalCode}</span>
+                                    </div>
+                                    <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                        <p>Numer telefonu</p>
+                                        <span>{userPhone}</span>
+                                    </div>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__pickup'>
+                                    <h2>
+                                        Termin odbioru:
+                                    </h2>
+                                    <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                        <p>Data</p>
+                                        <span>{pickUpDate}</span>
+                                    </div>
+                                    <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                        <p>Godzina</p>
+                                        <span>{pickUpTime}</span>
+                                    </div>
+                                    <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                        <p>Uwagi dla kuriera</p>
+                                        <span>{msgToDeliveryGuy}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='giveaway__form__steps__btns'>
+                            <button onClick={() => dispatch({type: 'showStepFour'})}>Wstecz</button>
+                            <button onClick={sendForm}>Potwierdzam</button>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+          </>
+
     )
 }
