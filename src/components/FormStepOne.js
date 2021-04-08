@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {useStateValue} from "../context/StateProvider";
+import IconShirt from '../assets/Icon.png'
+import IconReuse from '../assets/Icon2.png'
 
 
 
@@ -277,6 +279,56 @@ export const FormStepThree = () => {
 export const FormStepFour = () => {
     const [state, dispatch] = useStateValue();
     const { userStreet, userCity, userPhone, userPostalCode, pickUpDate, pickUpTime, msgToDeliveryGuy } = state;
+    const [error, setError] = useState({
+        streetErr: '',
+        codeErr: '',
+        phoneErr: '',
+        cityErr: ''
+    });
+
+    const validateForm = () => {
+        let streetErr = '';
+        let codeErr = '';
+        let phoneErr = '';
+        let cityErr = '';
+
+        if (userStreet.length < 2) {
+            streetErr = 'Nazwa musi mieć co najmniej 2 znaki'
+        }
+        if (userCity.length < 2) {
+            cityErr = 'Nazwa musi mieć co najmniej 2 znaki'
+        }
+        if (userPhone.length !== 9) {
+            phoneErr = 'Numer musi mieć 9 znaków'
+        }
+        if (userPostalCode.length !== 5) {
+            codeErr = 'Kod musi mieć 5 znaków'
+        }
+
+        if (streetErr || cityErr || phoneErr || codeErr) {
+            setError(prevState => ({
+                ...prevState,
+                phoneErr: phoneErr,
+                cityErr: cityErr,
+                codeErr: codeErr,
+                streetErr: streetErr
+            }))
+            return false
+        }
+        return true
+    }
+
+    const seeSummary = () => {
+        const isValid = validateForm();
+
+        if(isValid) {
+            dispatch({
+                type: 'showSummary'
+            })
+        }
+    }
+
+
     return (
         <>
             <div className='giveaway__form__important'>
@@ -295,24 +347,28 @@ export const FormStepFour = () => {
                         <div className='giveaway__form__steps__inputs__last'>
                             <div className='giveaway__form__steps__inputs__last__data'>
                                 <h3>Adres odbioru:</h3>
+                                <p className='giveaway__form__steps__error'>{error.streetErr}</p>
                                 <label>
                                     <p>Ulica</p>
                                     <input type='text'
                                            value={userStreet}
                                            onChange={(e) => dispatch({type: 'setUserStreet', payload: e.target.value})}/>
                                 </label>
+                                <p className='giveaway__form__steps__error'>{error.cityErr}</p>
                                 <label>
                                     <p>Miasto</p>
                                     <input type='text'
                                             value={userCity}
                                             onChange={(e)=> dispatch({type: 'setUserCity', payload: e.target.value})}/>
                                 </label>
+                                <p className='giveaway__form__steps__error'>{error.codeErr}</p>
                                 <label>
                                     <p>Kod pocztowy</p>
                                     <input type='postal'
                                             value={userPostalCode}
                                             onChange={(e) => dispatch({type: 'setUserPostalCode', payload: e.target.value})}/>
                                 </label>
+                                <p className='giveaway__form__steps__error'>{error.phoneErr}</p>
                                 <label>
                                     <p>Numer telefonu</p>
                                     <input type='number'
@@ -344,11 +400,79 @@ export const FormStepFour = () => {
                     </div>
                     <div className='giveaway__form__steps__btns'>
                         <button onClick={() => dispatch({type:'showStepThree'})}>Wstecz</button>
-                       <button>Dalej</button>
+                       <button onClick={seeSummary}>Dalej</button>
                     </div>
                 </div>
             </div>
             </>
 
+    )
+}
+
+export const Summary = () => {
+    const [state, dispatch] = useStateValue();
+    const { radio, selectBag, city, kids, elderly, singleMoms, handicapped, homeless, userStreet, userCity, userPhone,
+    userPostalCode, pickUpDate, pickUpTime, msgToDeliveryGuy} = state;
+    return (
+            <div className='giveaway__form__steps'>
+                <div className='giveaway__form__steps__main'>
+                    <div className='giveaway__form__steps__inputs'>
+                    <h1>Podsumowanie Twojej darowizny</h1>
+                        <h2>Oddajesz:</h2>
+                        <div className='giveaway__form__steps__inputs__summary'>
+                            <img src={IconShirt} alt='shirt' />
+                            <p>{selectBag} worki, {radio}, {kids}, {homeless}, {elderly}, {handicapped}, {singleMoms}</p>
+                        </div>
+                        <div className='giveaway__form__steps__inputs__summary'>
+                            <img src={IconReuse} alt='reuse' />
+                            <p>Dla lokalizacji: {city}</p>
+                        </div>
+                        <div className='giveaway__form__steps__inputs__summary__address_pickup'>
+                            <div className='giveaway__form__steps__inputs__summary__address'>
+                                <h2>
+                                    Adres odbioru:
+                                </h2>
+                                <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                    <p>Ulica</p>
+                                    <span>{userStreet}</span>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                    <p>Miasto</p>
+                                    <span>{userCity}</span>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                    <p>Kod pocztowy</p>
+                                    <span>{userPostalCode}</span>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__address__details'>
+                                    <p>Numer telefonu</p>
+                                    <span>{userPhone}</span>
+                                </div>
+                            </div>
+                            <div className='giveaway__form__steps__inputs__summary__pickup'>
+                                <h2>
+                                    Termin odbioru:
+                                </h2>
+                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                    <p>Data</p>
+                                    <span>{pickUpDate}</span>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                    <p>Godzina</p>
+                                    <span>{pickUpTime}</span>
+                                </div>
+                                <div className='giveaway__form__steps__inputs__summary__pickup__details'>
+                                    <p>Uwagi dla kuriera</p>
+                                    <span>{msgToDeliveryGuy}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='giveaway__form__steps__btns'>
+                        <button onClick={() => dispatch({type: 'showStepFour'})}>Wstecz</button>
+                        <button>Potwierdzam</button>
+                    </div>
+                </div>
+            </div>
     )
 }

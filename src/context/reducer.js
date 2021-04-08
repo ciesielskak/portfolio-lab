@@ -23,7 +23,8 @@ export const initialState = {
     stepOne: true,
     stepTwo: false,
     stepThree: false,
-    stepFour: false
+    stepFour: false,
+    summary: false
 }
 
 export const reducer = (state, action) => {
@@ -140,7 +141,8 @@ export const reducer = (state, action) => {
                  stepOne: true,
                  stepTwo: false,
                  stepThree: false,
-                 stepFour: false
+                 stepFour: false,
+                 summary: false
              }
          case 'showStepTwo' :
              return {
@@ -148,7 +150,8 @@ export const reducer = (state, action) => {
                  stepOne: false,
                  stepTwo: true,
                  stepThree: false,
-                 stepFour: false
+                 stepFour: false,
+                 summary: false
              }
          case 'showStepThree' :
              return {
@@ -156,7 +159,8 @@ export const reducer = (state, action) => {
                  stepOne: false,
                  stepTwo: false,
                  stepThree: true,
-                 stepFour: false
+                 stepFour: false,
+                 summary: false
              }
          case 'showStepFour' :
              return {
@@ -164,7 +168,17 @@ export const reducer = (state, action) => {
                  stepOne: false,
                  stepTwo: false,
                  stepThree: false,
-                 stepFour: true
+                 stepFour: true,
+                 summary: false
+             }
+         case 'showSummary' :
+             return  {
+                 ...state,
+                 stepOne: false,
+                 stepTwo: false,
+                 stepThree: false,
+                 stepFour: false,
+                 summary: true
              }
          default:
              return state;

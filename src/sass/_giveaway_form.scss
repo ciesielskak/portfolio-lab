@@ -98,6 +98,52 @@
             }
           }
         }
+        &__summary {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          color: black;
+          img {
+            margin-right: 20px;
+          }
+          p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: black;
+          }
+          &__address_pickup {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+          }
+          &__address {
+            &__details {
+              display: flex;
+              align-items: center;
+              margin: 20px 0;
+              p {
+                width: 5em;
+                font-size: 1.2rem;
+              }
+              span {
+                font-size: 1.2rem;
+              }
+            }
+          }
+          &__pickup {
+            &__details {
+              display: flex;
+              margin: 20px 0;
+              p {
+                width: 5em;
+                font-size: 1.2rem;
+              }
+              span {
+                font-size: 1.2rem;
+              }
+            }
+          }
+        }
       }
       &__inputWrapper {
         display: flex;
