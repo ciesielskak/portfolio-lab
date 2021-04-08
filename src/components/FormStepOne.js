@@ -275,17 +275,63 @@ export const FormStepThree = () => {
 }
 
 export const FormStepFour = () => {
+    const [state, dispatch] = useStateValue();
     return (
         <>
             <div className='giveaway__form__important'>
                 <div className='giveaway__form__important__card'>
                     <h1>Ważne!</h1>
-                    <p>Uzupełnij szczegóły dotyczące Twoich rzeczy.
-                        Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.</p>
+                    <p>Podaj adres oraz termin odbioru rzeczy.</p>
                 </div>
             </div>
             <div className='giveaway__form__steps'>
                 <div className='giveaway__form__steps__main'>
+                    <div className='giveaway__form__steps__inputs'>
+                        <h3>Krok 4/4</h3>
+                        <h1>
+                            Podaj adres oraz termin odbioru rzeczy przez kuriera
+                        </h1>
+                        <div className='giveaway__form__steps__inputs__last'>
+                            <div className='giveaway__form__steps__inputs__last__data'>
+                                <h3>Adres odbioru:</h3>
+                                <label>
+                                    <p>Ulica</p>
+                                    <input type='text' />
+                                </label>
+                                <label>
+                                    <p>Miasto</p>
+                                    <input type='text' />
+                                </label>
+                                <label>
+                                    <p>Kod pocztowy</p>
+                                    <input type='postal' />
+                                </label>
+                                <label>
+                                    <p>Numer telefonu</p>
+                                    <input type='number' />
+                                </label>
+                            </div>
+                            <div className='giveaway__form__steps__inputs__last__data'>
+                                <h3>Termin odbioru:</h3>
+                                <label>
+                                   <p>Data</p>
+                                    <input type='date' />
+                                </label>
+                                <label>
+                                    <p>Godzina</p>
+                                    <input type='time' />
+                                </label>
+                                <label>
+                                    <p>Uwagi dla kuriera</p>
+                                    <input type='textarea' />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='giveaway__form__steps__btns'>
+                        <button onClick={() => dispatch()}>Wstecz</button>
+                       <button>Dalej</button>
+                    </div>
                 </div>
             </div>
             </>

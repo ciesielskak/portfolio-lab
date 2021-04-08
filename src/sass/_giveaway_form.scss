@@ -69,6 +69,35 @@
             cursor: pointer;
           }
         }
+        &__last {
+          display: flex;
+          width: 60%;
+          justify-content: space-between;
+          &__data{
+            display: flex;
+            flex-direction: column;
+            h3 {
+              font-size: 1.2rem !important;
+              font-weight: 600 !important;
+              margin-bottom: 20px !important;
+            }
+            label {
+              display: flex;
+              margin: 10px 0;
+              p {
+                width: 5em;
+                font-size: 1.2rem;
+              }
+              input {
+                width: 15em;
+                background: transparent;
+                outline: none;
+                margin-left: 20px;
+                border: 2px solid #737373;
+              }
+            }
+          }
+        }
       }
       &__inputWrapper {
         display: flex;
