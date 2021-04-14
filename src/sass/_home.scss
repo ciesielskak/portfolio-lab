@@ -5,32 +5,34 @@
     min-height: 95vh;
     background: $body-color;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 0.7fr 1.3fr 1fr;
-    grid-template-rows: 0.4fr 1.5fr 1.1fr;
-    gap: 0 0;
-    grid-template-areas:
-    "img img home__navigation home__navigation"
-    "img img home__mainLinks home__mainLinks"
-    "img img home__mainLinks home__mainLinks";
+    display:flex;
   }
   &__mainImage {
+    width: 40%;
     background-image: url("../assets/Hero Image.png");
     background-position: -340px;
     background-size: cover;
     background-repeat: no-repeat;
-    grid-area: img;
+  
   }
   &__navigation {
-    width: 45%;
     height: auto;
     display: flex;
     box-sizing: border-box;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 20px 0;
     position: absolute;
-    right: 100px;
+    right: 0;
+    &__burger {
+      display: none;
+      span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #3C3C3C;
+        margin: 5px 0;
+      }
+    }
 
     &__btns {
       display: flex;
@@ -83,9 +85,11 @@
   &__columns {
     &__container {
       width: 100%;
+      height: auto;
       padding: 50px 60px;
       background-image: url("../assets/3 Columns Background.png");
       background-repeat: no-repeat;
+      background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -100,6 +104,7 @@
     align-items: center;
     text-align: center;
     box-sizing: border-box;
+    margin: 10px;
     h1 {
       font-size: 5.6rem;
       color: $brown-ish;
@@ -120,12 +125,9 @@
     }
   }
   &__mainLinks {
-    height: 100%;
     box-sizing: border-box;
     color: #3C3C3C;
-    grid-area: home__mainLinks;
     &__contentWrapper {
-      width: 86%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -144,6 +146,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
       margin-top: 40px;
       a {
         width: 8em;

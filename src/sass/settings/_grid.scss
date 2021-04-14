@@ -1,0 +1,93 @@
+@media screen and (max-width: 768px) {
+    body {
+        position: relative;
+        overflow-x: hidden;
+    }
+ .home {
+     &__container {
+         width: 100%;
+         min-height: 95vh;
+     }
+     &__mainImage {
+         width: 100%;
+         position: relative;
+         &::after {
+             content: '';
+             display: block;
+             top: 0;
+             left: 0;
+             bottom: 0;
+             right: 0;
+             position: absolute;
+             background-color:white;
+             opacity: 0.8;
+         }
+     }
+     &__mainLinks {
+         height: 95vh;
+         width: 100%;
+         position: absolute;
+         &__contentWrapper {
+             width: 100%;
+             justify-content: center;
+             align-items: center;
+         }
+         &__btns {
+             font-size: 1.8rem;
+             width: 90%;
+         }
+         &__title {
+             width: 90%;
+             margin: 0 0 40px 0;
+             font-size: 2rem;
+         }
+     }
+     &__navigation {
+             height: 100vh;
+             display: flex;
+             position: absolute;
+             right: 0;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             background-color: blueviolet;
+             transform: translateX(100%);
+             z-index: 2;
+        &__links {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+         }
+         &__btns {
+             width: 100%;
+             display: flex;
+             flex-direction: column;
+         }
+         &__burger {
+             position: absolute;
+             right: 0;
+             z-index: 2;
+             height: 50px;
+            display: block;
+            padding: 10px;
+            cursor: pointer;
+         }
+     }
+     &__columns {
+         &__container {
+             height: auto;
+             flex-wrap: wrap;
+         }
+     }
+ }
+ .active {
+    transform: translateX(0%);
+    }
+    .foursteps {
+        &__header {
+            width: 90%;
+            font-size: 1.8rem;
+        }
+    }
+}

@@ -1,20 +1,32 @@
 import {NavRouteLinks} from "./NavRouteLinks";
 import {NavLink} from "react-router-dom";
 import {Link} from "react-scroll";
-import React from "react";
+import React, { useState } from "react";
 
 export const HomeHeader = () => {
+    const [active, setActive] = useState(false);
+
+    const toggleNav = () => {
+        setActive(prevState => !prevState)
+    }
     return (
-        <nav className='home__navigation'>
-            <NavRouteLinks />
-            <ul className='home__navigation__links'>
-                <NavLink to='/'>Start</NavLink>
-                <Link to='foursteps' smooth={true} duration={1000}>O co chodzi?</Link>
-                <Link to='about' smooth={true} duration={1000}>O nas</Link>
-                <Link to='foundations' smooth={true} duration={1000}>Fundacja i organizacje</Link>
-                <Link to='contact' smooth={true} duration={1000}>Kontakt</Link>
-            </ul>
+        <>
+        <nav className={active? 'home__navigation active' : 'home__navigation'}>
+            <NavRouteLinks toggle={toggleNav}/>
+                    <ul className='home__navigation__links'>
+                <NavLink to='/' onClick={toggleNav}>Start</NavLink>
+                <Link to='foursteps' smooth={true} duration={1000} onClick={toggleNav}>O co chodzi?</Link>
+                <Link to='about' smooth={true} duration={1000} onClick={toggleNav}>O nas</Link>
+                <Link to='foundations' smooth={true} duration={1000} onClick={toggleNav}>Fundacja i organizacje</Link>
+                <Link to='contact' smooth={true} duration={1000} onClick={toggleNav}>Kontakt</Link>
+                    </ul>
         </nav>
+        <div className='home__navigation__burger' onClick={toggleNav}>
+        <span className='home__navigation__burger__1'></span>
+        <span className='home__navigation__burger__2'></span>
+        <span className='home__navigation__burger__3'></span>
+    </div>
+    </>
     )
 
 }

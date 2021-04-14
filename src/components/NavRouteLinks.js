@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {useStateValue} from "../context/StateProvider";
 import { auth } from "../firebase/firebase";
 
-export const NavRouteLinks = () => {
+export const NavRouteLinks = (props) => {
     const [state, dispatch] = useStateValue()
     const {user} = state
 
@@ -32,8 +32,8 @@ export const NavRouteLinks = () => {
 
                      :
                     <div className='home__navigation__btns'>
-                        <Link to='/login'>Zaloguj</Link>
-                        <Link to='/register'>Załóż konto</Link>
+                        <Link to='/login' onClick={props.toggle}>Zaloguj</Link>
+                        <Link to='/register' onClick={props.toggle}>Załóż konto</Link>
                     </div>
 
 
