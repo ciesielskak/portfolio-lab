@@ -35,6 +35,10 @@
          &__btns {
              font-size: 1.8rem;
              width: 90%;
+             a {
+                 width: 80%;
+                 padding: 20px 0;
+             }
          }
          &__title {
              width: 90%;
@@ -85,9 +89,94 @@
     transform: translateX(0%);
     }
     .foursteps {
+        &__container {
+            a {
+                margin: 20px 0 0 0;
+                width: 60%;
+                padding: 20px 0;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            img {
+                margin: 20px;
+            }
+        }
+        &__maincontent {
+            padding: 20px;
+        }
+    }
+    .about {
+        &__container {
+            display: flex;
+            height: auto;
+            flex-direction: column;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__text {
+            width: 100%;
+        }
+    }
+    .foundations {
+        &__container {
+            height: auto;
+        }
         &__header {
-            width: 90%;
-            font-size: 1.8rem;
+            width: 100%;
+            box-sizing: border-box;
+            span {
+                font-size: 1rem;
+                width: 100%;
+                margin: 10px 0;
+            }
+            &__nav {
+                display: flex;
+                flex-direction: column;
+            
+                a {
+                font-size: 1.2rem;
+                margin: 0;
+                }
+            }
+        }
+        &__content {
+            width: 100%;
+            &__list__item {
+                padding: 15px 0;
+                h1 {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+    .contact {
+        &__container {
+            padding: 50px;
+        }
+        &__form {
+            width: 100%;
+            margin: 0;
+           
+        }
+        &__footer {
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            box-sizing: border-box;
+            &__title {
+                padding: 5px;
+
+            }
+            &__images {
+                margin-right: 0;
+                img {
+                    margin-right: 5px !important;
+                }
+            }
         }
     }
 }

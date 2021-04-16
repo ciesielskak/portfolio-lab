@@ -19,7 +19,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0.4;
+    opacity: 0.2;
   }
   }
 
@@ -85,6 +85,8 @@
       border: none;
       outline: none;
       border-bottom: 3px solid $form-font-color;
+      resize: none;
+      color: black;
     }
     &__textarea {
       width: 100%;
@@ -97,7 +99,6 @@
       textarea {
         height: 100%;
         width: 100%;
-        color: #3C3C3C26;
         font-size: 1.3rem;
       }
     }

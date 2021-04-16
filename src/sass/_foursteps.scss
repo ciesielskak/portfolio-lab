@@ -1,3 +1,4 @@
+@import './settings/mixins';
 .foursteps {
   &__container {
     width: 100%;
@@ -9,17 +10,7 @@
     justify-content: space-around;
     padding: 50px 0;
     a {
-        width: 7em;
-        box-sizing: border-box;
-        text-decoration: none;
-        border: 0.75px solid #3C3C3C;
-        padding: 10px 20px;
-        text-align: center;
-        margin: 15px;
-        cursor: pointer;
-      font-size: 2.25rem;
-      color: $main-font-color;
-
+       @include homepageBtn;
     }
   }
   &__header {
