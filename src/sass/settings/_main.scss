@@ -11,12 +11,14 @@
 @import "src/sass/logout_success";
 @import "src/sass/giveaway";
 @import "src/sass/giveaway_form";
-@import 'grid';
 @import 'mixins';
+@import 'grid';
 
 body {
   font-family: $font-base;
   overflow-y: auto;
+  overflow-x: hidden;
+
 
 }
 

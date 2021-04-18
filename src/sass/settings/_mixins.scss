@@ -21,7 +21,11 @@
       border: 2px solid transparent;
       text-align: center;
 }
-
+@mixin small-mobile {
+        @media screen and (min-width: 376px) {
+                @content;
+        }
+}
 @mixin mobile {
         @media screen and (min-width: 576px) {
                 @content;
