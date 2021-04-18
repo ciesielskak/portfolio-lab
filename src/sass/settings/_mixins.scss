@@ -6,3 +6,34 @@
         text-align: center;
         margin: 15px;
 }
+
+@mixin Container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1600px;
+        box-sizing: border-box;
+}
+
+@mixin Link {
+      text-decoration: none;
+      color: inherit;  
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-align: center;
+}
+
+@mixin mobile {
+        @media screen and (min-width: 576px) {
+                @content;
+        }
+}
+@mixin tablet {
+        @media screen and (min-width: 768px) {
+                @content;
+        }
+}
+@mixin desktop {
+        @media screen and (min-width: 992px) {
+                @content;
+        }
+}
