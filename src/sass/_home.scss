@@ -160,16 +160,25 @@
   }
   &__columns {
     &__container {
-      width: 100%;
-      height: auto;
-      padding: 50px 60px;
+      @include Container;
+      display: flex;
+      flex-direction: column;
       background-image: url("../assets/3 Columns Background.png");
       background-repeat: no-repeat;
       background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
+      padding: 20px 0;
+      @include tablet {
+        flex-direction: row;
+        padding: 30px 0;
+      }
+      @include desktop {
+        width: 100%;
+        height: auto;
+        padding: 50px 60px;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
     }
   }
   &__column {
@@ -182,9 +191,15 @@
     box-sizing: border-box;
     margin: 10px;
     h1 {
-      font-size: 5.6rem;
+      font-size: 5rem;
       color: $brown-ish;
       margin-bottom: 20px;
+      @include mobile {
+        font-size: 5.2rem;
+      }
+      @include tablet {
+        font-size: 5.6rem;
+      }
     }
     h3 {
       font-size: 1.12rem;
@@ -198,6 +213,15 @@
       line-height: 1.8rem;
       letter-spacing: -0.32px;
       color: #3C3C3C;
+      @include mobile {
+        width: 55%;
+      }
+      @include tablet {
+        width: 70%;
+      }
+      @include desktop {
+        width: 85%;
+      }
     }
   }
   &__mainLinks {
@@ -219,20 +243,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-@include desktop {
-  justify-content: flex-start;
+      @include desktop {
+      justify-content: flex-start;
+      }
 }
      
     img {
-        height: auto;
-        width: 40%;
-        margin: 20px 0 40px 0;
-        @include mobile {
-          width: 30%;
-          
-        }
-
-      }
+       @include responsiveDecoration;
     }
     &__title {
       width: 100%;
@@ -265,23 +282,11 @@
        flex-wrap: nowrap;
      }
       a {
-        @include homepageBtn;
-        width: 60%;
-        padding: 15px 25px;
-        font-size: 1.1rem;
-        @include mobile {
-          padding: 20px 30px;
-          width: 50%;
-          font-size: 1.3rem;
-        }
-        @include tablet {
-          width: 35%;
-          font-size: 1.5rem;
-        }
+       @include responsiveBtn;
       }
     }
   }
 }
 .active {
  right: 0%;
-}
+ }
