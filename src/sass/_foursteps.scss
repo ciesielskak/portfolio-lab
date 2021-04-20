@@ -13,10 +13,35 @@
       min-height: 100vh;
     }
     a {
-       @include responsiveBtn;
+      margin-top: 30px;
+      font-weight: 400;
+       @include Btn;
+       @include small-mobile {
+        width: 50%;
+       }
+       @include mobile {
+         width: 40%;
+       }
+       @include tablet {
+         width: 25%;
+         font-size: 1.6rem;
+         padding: 20px 30px;
+       }
+       @include desktop {
+         font-size: 1.8rem;
+         width: 18%;
+         
+       }
     }
     img {
       @include responsiveDecoration;
+      margin: 20px 0;
+      @include tablet {
+        width: 20%;
+      }
+      @include desktop {
+        width: 18%;
+      }
     }
   }
   &__header {
@@ -42,9 +67,14 @@
     align-items: center;
     flex-direction: column;
     background: #F0F1F1;
-    
+    padding: 20px;
+    z-index: -2;
     @include tablet {
       flex-direction: row;
+      padding: 50px 50px;
+      align-items: baseline;
+    }
+    @include desktop {
       padding: 50px 90px;
     }
     &__column {
@@ -54,8 +84,23 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      margin: 10px 40px;
-
+      margin: 10px;
+      @include tablet {
+        height: 80%;
+        margin: 10px 20px;
+      }
+      @include desktop {
+        margin: 10px 40px;
+      }
+      img {
+        width: 50%;
+        height: 50%;
+        margin: 0;
+       @include tablet {
+         width: 40%;
+         height: 40%;
+       }
+      }
       h3 {
         font-size: 1.12rem;
         color: $main-font-color;
@@ -79,11 +124,6 @@
         padding: 10px 0;
       }
     }
-  }
-  &__img {
-    width: 73px;
-    height: 73px;
-    padding-bottom: 5px;
   }
 
 }
