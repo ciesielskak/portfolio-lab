@@ -1,27 +1,7 @@
 @media screen and (max-width: 768px) {
  
     
-    .about {
-        &__container {
-            display: flex;
-            height: auto;
-            flex-direction: column;
-        }
-        &__text {
-            width: 100%;
-            span {
-                font-size: 1.2rem;
-            }
-        }
-        &__signature {
-            width: 50%;
-            margin-bottom: 10px;
-        }
-       &__image { 
-            width: 100%;
-            height: auto;
-        }
-    }
+    
     .foundations {
         &__container {
             height: auto;

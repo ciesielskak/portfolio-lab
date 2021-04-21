@@ -13,7 +13,7 @@
       min-height: 100vh;
     }
     a {
-      margin-top: 30px;
+      margin-top: 50px;
       font-weight: 400;
        @include Btn;
        @include small-mobile {
@@ -30,6 +30,7 @@
        @include desktop {
          font-size: 1.8rem;
          width: 18%;
+        
          
        }
     }
@@ -45,7 +46,7 @@
     }
   }
   &__header {
-    font-size: 7vw;
+    font-size: 8vw;
     text-align: center;
     color: $main-font-color;
     letter-spacing: -0.76px;
