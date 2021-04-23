@@ -1,4 +1,4 @@
-##React App for stuff donation 
+# React App for stuff donation 
 
 **Functions:**
 
