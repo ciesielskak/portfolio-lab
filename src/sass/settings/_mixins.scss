@@ -37,6 +37,11 @@
                 @content;
         }
 }
+@mixin medium-mobile {
+        @media screen and (min-width: 414px) {
+                @content;
+        }
+}
 @mixin mobile {
         @media screen and (min-width: 576px) {
                 @content;

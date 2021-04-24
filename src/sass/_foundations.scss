@@ -3,43 +3,93 @@
     @include Container;
     height: auto;
     padding: 30px 0;
+  }
   &__header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: $main-font-color;
     h1 {
-      font-size: 2.37rem;
-      color: $main-font-color;
+      font-size: 8vw;
       letter-spacing: -0.76px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      @include mobile {
+        font-size: 5vw;
+      }
+      @include tablet {
+        font-size: 4vw;
+      }
+      @include desktop {
+        font-size: 3vw;
+      }
+    }
+    img {
+      width: 40%;
+      height: auto;
+      margin-bottom: 20px;
+      @include mobile {
+        width: 30%;
+      }
+      @include tablet {
+        width: 25%;
+      }
+      @include desktop {
+        width: 20%;
+      }
     }
     span {
-      width: 40%;
-      font-size: 1.25rem;
-      color: $main-font-color;
+      font-size: 1rem;
       text-align: center;
-      margin: 10px 0 30px 0;
-      line-height: 1.87rem;
+      line-height: 1.6rem;
+      margin: 20px 0;
+      @include medium-mobile {
+        width: 90%;
+      }
+      @include mobile {
+        width: 80%;
+      }
+      @include tablet {
+        width: 50%;
+        padding: 0 20px;
+      }
+      @include desktop {
+        width: 35%;
+        margin: 30px 0;
+      }
     }
     &__nav {
+      width: 100%;
       display: flex;
-      margin: 20px;
       box-sizing: border-box;
       text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0y;
+      @include medium-mobile {
+        justify-content: space-around;
+      }
+      @include tablet {
+        width: 60%;
+      }
       a {
-        width: 9em;
         text-decoration: none;
         color: inherit;
-        padding: 20px;
-        font-size: 1.4rem;
+        font-size: 1rem;
         text-align: center;
-        margin: 0 20px;
         border: 2px solid transparent;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
+        @include medium-mobile {
+          width: 30%;
+          padding: 10px;
+        }
+        @include desktop {
+          width: 20%;
+          padding: 20px;
+        }
 
         &:hover,
         &:active {
@@ -50,54 +100,63 @@
   }
   &__content {
     display: flex;
-    height: 50%;
-    margin-top: 20px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     color: $main-font-color;
     &__list {
-      width: 70%;
-      margin-top: 30px;
-
+      width: 100%;
+      @include mobile {
+        width: 80%;
+      }
+      @include desktop {
+        width: 70%;
+        margin-top: 30px;
+      }
       &__item {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 30px 0;
+        padding: 10px 0;
+        @include desktop {
+          padding: 20px 0;
+        }
         &:nth-child(2) {
           border-top: 2px solid $form-border-bottom;
           border-bottom: 2px solid $form-border-bottom;
         }
         h2 {
-          font-size: 1.3rem;
           margin-bottom: 5px;
         }
       }
     }
     ul:last-child {
       display: flex;
-      margin-top: 30px;
+      margin-top: 20px;
+      @include desktop {
+        margin-top: 30px;
+      }
       box-sizing: border-box;
-      a {
+      li {
         cursor: pointer;
-        font-size: 1.1rem;
         border: 3px solid transparent;
-        padding: 10px;
-        margin: 10px;
+        margin: 0 5px;
+        padding: 5px;
+      }
+      a{
         outline: none;
-        &:hover,
-        &:active {
-          border: 3px solid $form-font-color;
-        }
       }
     }
   }
   &__pagination {
     width: 100%;
   }
-}}
+}
 .previous,
 .next {
   display: none;
+}
+.selected {
+  border: 3px solid $form-font-color !important;
+  outline: none;
 }
