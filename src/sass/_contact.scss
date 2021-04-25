@@ -1,15 +1,15 @@
 .contact {
   &__container {
-    width: 100%;
-    max-width: 1600px;
-    min-height: 100vh;
+   @include Container;
+   height: auto;
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     justify-content: space-between;
-    padding: 0 100px;
-    box-sizing: border-box;
+    @include desktop {
+      padding: 0 100px;
+      align-items: flex-end;
+    }
   &:before {
     content: "";
     background-image: url("../assets/Background Image.png");
@@ -24,8 +24,6 @@
   }
 
   &__form {
-    width: 35%;
-    height: 100vh;
     position: relative;
     color: $main-font-color;
     box-sizing: border-box;
@@ -33,10 +31,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 0;
-    margin-right: 20px;
+    @include desktop {
+      width: 35%;
+      height: 100vh;
+      padding: 50px 0;
+      margin-right: 20px;
+    }
 
     &__header {
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -49,21 +52,51 @@
         font-weight: 600;
         margin-top: 30px;
       }
+      img {
+        width: 40%;
+        height: auto;
+        @include mobile {
+          width: 30%;
+        }
+        @include tablet {
+          width: 25%;
+        }
+        @include desktop {
+          width: 20%;
+        }
+      }
     }
     h1 {
-      font-size: 2.37rem;
+      font-size: 8vw;
       letter-spacing: -0.76px;
       margin-bottom: 30px;
       text-align: center;
+      @include mobile {
+        font-size: 5vw;
+      }
+      @include tablet {
+        font-size: 4vw;
+      }
+      @include desktop {
+        font-size: 3vw;
+      }
     }
     &__inputWrapper {
       display: flex;
+      flex-direction: column;
       margin-top: 40px;
       width: 100%;
+      padding: 10px;
+      @include mobile {
+        flex-direction: row;
+      }
     }
     &__inputs {
-      width: 50%;
-      margin: 10px;
+      width: 100%;
+      @include desktop {
+        width: 50%;
+        margin: 10px;
+      }
       h2 {
         font-weight: 600;
         margin-bottom: 10px;
@@ -90,8 +123,11 @@
     }
     &__textarea {
       width: 100%;
-      padding: 20px 10px 10px 10px;
-      margin-bottom: 50px;
+      padding: 10px;
+      @include desktop {
+        margin-bottom: 50px;
+        padding: 20px 10px 10px 10px;
+      }
       h2 {
         font-weight: 600;
         margin-bottom: 10px;
@@ -103,37 +139,50 @@
       }
     }
     button {
+      width: 40%;
       font-size: 1.1rem;
       border: 2px solid $main-font-color;
-      width: 8em;
       padding: 10px 0;
       background: transparent;
-      align-self: flex-end;
       cursor: pointer;
-      margin-right: 10px;
+      margin: 30px 0;
+      @include desktop {
+        align-self: flex-end;
+        margin-right: 10px;
+      }
     }
   }
   &__footer {
-    position: relative;
-    padding: 10px;
-    margin-bottom: 10px;
     width: 100%;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
-    box-sizing: border-box;
-    justify-content: center;
+    margin: 20px 0;
+    @include desktop {
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      justify-content: center;
+    }
     &__title {
       color: #3C3C3C;
 
     }
     &__images {
+      width: 100%;
       display: flex;
+      justify-content: center;
       align-items: center;
-      margin-right: 30px;
-      position: absolute;
-      right: 0;
-      img:first-child {
+      margin-bottom: 10px;
+      @include desktop {
         margin-right: 30px;
+      }
+      img:first-child {
+        
+          margin-right: 30px;
+        
       }
     }
   }
