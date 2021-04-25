@@ -1,38 +1,70 @@
 .login {
   &__container {
-    height: 100vh;
-    width: 100%;
-    max-width: 1600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include Container;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    @include desktop {
+      top: 60%;
+    }
   }
   &__card {
-    height: 100%;
-    width: 400px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     //padding: 20px 100px;
+    @include tablet {
+      padding: 20px;
+    }
 
     h1 {
+      font-size: 8vw;
       text-align: center;
       color: $main-font-color;
-      font-size: 2.5rem;
       letter-spacing: -0.8px;
+      @include mobile  {
+        font-size: 6vw;
+      }
+      @include tablet {
+        font-size: 4vw;
+      }
+      @include desktop {
+        font-size: 2vw;
+      }
     }
     img {
-      margin-top: 30px;
-      margin-bottom: 50px;
+      width: 50%;
+      margin: 10px 0 20px 0;
+      @include mobile {
+        width: 40%;
+      }
+      @include desktop {
+        width: 15%;
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
     }
     form {
       width: 100%;
+      height: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      @include mobile {
+        width: 80%;
+      }
+      @include tablet {
+        width: 60%;
+      }
+      @include desktop {
+        width: 30%;
+      }
     }
   }
   &__inputs {
@@ -47,6 +79,7 @@
         margin-top: 30px;
       }
       input {
+        font-size: 1rem;
         border: none;
         width: 100%;
         border-bottom: 2px solid #707070;
@@ -62,10 +95,16 @@
     }
   }
   &__btns {
-    width: 130%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     margin-top: 30px;
+    justify-content: space-evenly;
+    @include tablet {
+      justify-content: space-between;
+    }
+    @include desktop {
+      width: 130%;
+    }
     button, a {
       color: $main-font-color;
       font-size: 1.12rem;

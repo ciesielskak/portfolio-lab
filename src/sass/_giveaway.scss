@@ -1,48 +1,92 @@
 .giveaway__home {
   &__container {
-    width: 100%;
-    min-height: 90vh;
-    max-width: 1600px;
-    box-sizing: border-box;
-    display: grid;
+   @include Container;
+   height: auto;
+   padding: 20px 0;
     color: $main-font-color;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 0 0;
-    grid-template-areas:
-    "img img . ."
-    "img img div div"
-    "img img div div";
+    @include desktop {
+      min-height: 90vh;
+      display: flex;
+      padding: 0;
+    }
+    
+   
   }
   &__background {
-    background-image: url("../assets/Header-Form-Background.png");
-    grid-area: img;
-    background-size: cover;
+    padding: 10px;
+    width: 40%;
+    @include desktop {
+      background-image: url("../assets/Header-Form-Background.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+     background-position: center center;
+    }
   }
   &__info {
-    grid-area: div;
-    margin-right: 100px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    padding: 10px;
+    @include desktop {
+      width: 70%;
+      justify-content: center;
+    }
     h1 {
-      font-size: 2.2rem;
-      width: 90%;
+      font-size: 8vw;
       letter-spacing: -0.76px;
       line-height: initial;
+      @include medium-mobile {
+        font-size: 6vw;
+      }
+      @include mobile {
+        font-size: 5vw;
+      }
+      @include tablet {
+        font-size: 4vw;
+        width: 80%;
+      }
+      @include desktop {
+        font-size: 2vw;
+      }
     }
     img {
+      width: 50%;
       margin: 20px 0;
+      @include mobile {
+        width: 40%;
+      }
+      @include tablet {
+        width: 30%;
+      }
+      @include desktop {
+        width: 25%;
+      }
     }
     p {
-      font-size: 2rem;
+      font-size: 8vw;
       font-weight: 200;
       margin-bottom: 40px;
+      @include medium-mobile {
+        font-size: 6vw;
+      }
+      @include mobile {
+        font-size: 5vw;
+      }
+      @include tablet {
+        font-size: 4vw;
+      }
+      @include desktop {
+        font-size: 2vw;
+      }
     }
     &__steps {
       display: flex;
+      flex-direction: column;
+      padding: 10px;
+      @include mobile {
+        flex-direction: row;
+      }
       div {
         display: flex;
         flex-direction: column;
@@ -53,13 +97,19 @@
         height: 100px;
         margin: 10px;
         font-weight: 200;
+        z-index: -1;
         span:first-child {
-          margin-bottom: 20px;
-          font-size: 1.2rem;
+          margin: 10px 0;
+          z-index: -1;
+          @include desktop {
+            margin-bottom: 20px;
+          }
+          
         }
         span:last-child {
           align-self: center;
           width: 70%;
+          z-index: -1;
 
         }
         &:after {
@@ -69,6 +119,7 @@
           height: 100%;
           border: 2px solid $main-font-color;
           transform: rotate(45deg);
+          z-index: -1;
 
 
 

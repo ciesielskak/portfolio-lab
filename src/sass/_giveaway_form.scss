@@ -1,9 +1,8 @@
 .giveaway {
   &__form {
     &__important {
-      height: 20vh;
-      width: 100%;
-      max-width: 1600px;
+     @include Container;
+      height: auto;
       background: $column-gold;
       display: flex;
       align-items: center;
