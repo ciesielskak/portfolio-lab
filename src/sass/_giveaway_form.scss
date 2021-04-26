@@ -7,6 +7,9 @@
       display: flex;
       align-items: center;
       padding: 20px;
+      @include tablet {
+        padding: 30px 50px;
+      }
       &__card {
         h1 {
           color: black;
@@ -21,32 +24,61 @@
     &__steps {
       background-image: url("../assets/Background-Form.png");
       background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       color: $main-font-color;
       padding: 20px;
+      min-height: 80vh;
       @include desktop {
         padding: 50px;
-        min-height: 80vh;
       }
       &__successful {
-        height: 100%;
-        &__main{
           height: 100%;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
+         align-items: center;
+         justify-content: center;
           @include desktop {
             width: 70%;
           }
           h1 {
-            
+            font-size: 6vw;
             font-weight: 300;
-            line-height: 55px;
-            width:75%;
             text-align: center;
             margin-bottom: 30px;
+            @include medium-mobile {
+              font-size: 5vw;
+            }
+            @include mobile {
+              font-size: 4vw;
+            }
+            @include tablet {
+              font-size: 3vw;
+              width:75%;
+              line-height: 55px;
+            }
+            @include desktop {
+              font-size: 2vw;
+            }
           }
-        }
+            img {
+              width: 30%;
+              height: auto;
+              @include mobile {
+                width: 40%;
+              }
+              @include tablet {
+                width: 20%;
+              }
+              @include desktop {
+                width: 20%;
+              }
+            }
+           
+          
+        
 
       }
       &__error {
@@ -56,7 +88,9 @@
         color: red;
       }
       &__org {
-        width: 50%;
+        @include tablet {
+          width: 50%;
+        }
         input {
           width: 70%;
           background: transparent;
@@ -75,6 +109,7 @@
           }
           @include mobile {
             font-size: 4vw;
+            width: 60%;
           }
           @include tablet {
             font-size: 3vw;
@@ -102,11 +137,25 @@
         }
         &__last {
           display: flex;
-          width: 60%;
-          justify-content: space-between;
+          flex-direction: column;
+          @include mobile {
+            flex-direction: row;
+          }
+          @include tablet {
+            width: 60%;
+            justify-content: space-between;
+          }
           &__data{
             display: flex;
             flex-direction: column;
+            &:first-child {
+              @include mobile {
+                margin-right: 10px;
+              }
+              @include desktop {
+                margin-right: 50px;
+              }
+            }
             h3 {
               font-size: 1.2rem !important;
               font-weight: 600 !important;
@@ -115,9 +164,9 @@
             label {
               display: flex;
               margin: 10px 0;
-              p {
+              justify-content: space-between;
+              @include mobile {
                 
-          
               }
               input {
                 width: 15em;
@@ -138,26 +187,30 @@
             margin-right: 20px;
           }
           p {
-            font-size: 1.2rem;
             font-weight: 400;
             color: black;
           }
           &__address_pickup {
             display: flex;
-            justify-content: space-between;
-            width: 50%;
+            flex-direction: column;            
+            @include tablet {
+              flex-direction: row;
+              
+            }
+            @include desktop {
+              justify-content: flex-start;
+            }
           }
           &__address {
+            @include desktop {
+              margin-right: 100px;
+            }
             &__details {
               display: flex;
               align-items: center;
               margin: 20px 0;
               p {
-                width: 5em;
-                font-size: 1.2rem;
-              }
-              span {
-                font-size: 1.2rem;
+               width: 50%;
               }
             }
           }
@@ -166,11 +219,8 @@
               display: flex;
               margin: 20px 0;
               p {
-                width: 5em;
-                font-size: 1.2rem;
-              }
-              span {
-                font-size: 1.2rem;
+                width: 50%;
+                
               }
             }
           }
@@ -192,9 +242,11 @@
         h3 {
           font-weight: 300;
           align-self: flex-start;
+          margin-top: 20px;
           margin-bottom: 30px;
           @include desktop {
             margin-bottom: 50px;
+            margin-top: 0;
           }
         }
         button {
@@ -205,27 +257,33 @@
           background: transparent;
           cursor: pointer;
           padding: 10px;
-          margin: 20px 20px 0 0;
           outline: none;
           @include mobile {
             width: 30%;
+            margin-right: 20px;
           }
           @include tablet {
             width: 20%;
           }
           @include desktop {
             width: 10%;
+            margin: 20px 20px 0 0;
           }
 
         }
       }
       &__select-section {
         display: flex;
+        flex-direction: column;
         align-items: center;
+        @include mobile {
+          flex-direction: row;
+        }
         h2 {
-          font-size: 1.3rem;
           font-weight: 300;
-          margin-right: 10px;
+          @include desktop {
+            margin-right: 10px;
+          }
         }
 
       }
@@ -234,22 +292,33 @@
         select {
           padding: 5px 10px;
           font-family: $font-base;
-          width: 15em;
           text-align: center;
           outline: none;
           border: 2px solid $main-font-color;
           background: transparent;
+          @include mobile {
+            margin-left: 20px;
+          }
         }
         option {
           background: transparent;
         }
       }
       &__btns {
-        display: flex;
+        
+          display: flex;
+          justify-content: space-around;
+          margin-top: 20px;
+          @include mobile {
+            justify-content: flex-start;
+          }
+        
       }
     }
     &__checkbox {
-      width: 50%;
+      @include desktop {
+        width: 50%;
+      }
     }
   }
 }
@@ -296,7 +365,6 @@
   &__label {
     display: inline-flex;
     position: relative;
-    font-size: 1.2rem;
     padding: 5px 10px;
     margin: 0 30px 20px 0;
     font-weight: 300;

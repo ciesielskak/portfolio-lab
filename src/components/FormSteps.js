@@ -449,12 +449,10 @@ export const Summary = () => {
         {
             sent? (
                 <div className='giveaway__form__steps'>
-                    <div className='giveaway__form__steps__successful'>
-                        <div className='giveaway__form__steps__successful__main'>
+                    <div className='giveaway__form__steps__successful'>                        
                         <h1>Dziękujemy za przesłanie formularza
                             Na maila prześlemy wszelkie informacje o odbiorze.</h1>
-                        <img src={Decoration} alt='decoration' />
-                        </div>
+                        <img src={Decoration} alt='decoration' />                       
                     </div>
                 </div>
             ) : (
