@@ -10,7 +10,7 @@
 * Pagination with React Paginate
 * State controlled with Context API
 
-!Note!: Still adding some RWD changes and debugging minor errors. 
+<ins>Note: Still adding some **RWD changes** and **fixing minor errors**.</ins> 
 
 Project layout provided by *CodersLab* bootcamp school.
 
