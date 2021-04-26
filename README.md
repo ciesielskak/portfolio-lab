@@ -2,6 +2,9 @@
 
 ## Check out at: https://sharp-hypatia-9f9274.netlify.app
 
+**Main purpose**: After signing up, there's a form available to mark what, how much, to whom you'd like to donate your stuff and where to collect it. You can also send a message by filling out a basic form on the bottom of the page.
+
+
 **Functions:**
 
 * React Scroll
